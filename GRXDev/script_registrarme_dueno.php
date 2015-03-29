@@ -2,7 +2,7 @@
 include "BD.php";
 //Comprobamos que se ha introducido usuario, correo y contraseña
 if (isset($_POST['reg_nombre']) && isset($_POST['reg_correo']) && isset($_POST['reg_pass']) && isset($_POST['reg_nif'])) {
-    $datos = new BD("localhost", "GRXDev", "1234", "GRXDev");
+    $datos = new BD("localhost", "root", "", "GRXDev");
     //Extraemos todos los datos
     $nombre = $_POST['reg_nombre'];
     $correo = $_POST['reg_correo'];

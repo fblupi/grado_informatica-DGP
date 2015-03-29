@@ -1,10 +1,12 @@
     <?php
     include "BD.php";
     //Creamos la conexion de base de datos
-    $datos = new BD("localhost", "GRXDev", "1234", "GRXDev");
+    $datos = new BD("localhost", "root", "", "GRXDev");
+	//if($GLOBALS['sesion_iniciada']!=true){
     $GLOBALS['sesion_iniciada'] = false;//Variable que indica el estado de sesión
     $GLOBALS['nombre_perfil'] = 'Perfil';//Cadena para indicar el nombre de usuario
     $GLOBALS['tipo_usuario'] = 0;
+	//}
     /*Comprobamos si se ha obtenido correo y pass por medio de un formulario
      *en el cas de que se reciba algun dato en ambos se realizará la consulta.
      * En el caso de que existe el usuario que ha iniciado sesión, asignamos
@@ -22,6 +24,27 @@
         }
     }
     ?>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>GRXDev</title>
+        <meta name="generator" content="Bootply" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+                <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link href="css/styles.css" rel="stylesheet">
+		<!-- script references -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/scripts.js"></script>
+		<script type="text/javascript" src="js/ajax.js"></script>
+    </head>
+<body>
 <nav class="navbar navbar-fixed-top header">
     <div class="col-md-12">
         <div class="navbar-header">
@@ -72,7 +95,8 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse2">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Contenido</a></li>
+                <li class="active"><a href="index.php">Contenido</a></li>
+				<li><a href="index.php?cat=buscador">Buscador</a></li>
                 <?php if ($GLOBALS['sesion_iniciada'] == false) { ?><li><a href="#loginModal" role="button" data-toggle="modal">Iniciar sesión</a></li><?php } ?>
                 <li><a href="#aboutModal" role="button" data-toggle="modal">¿Quiénes somos?</a></li>
             </ul>
