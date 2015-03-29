@@ -1,6 +1,8 @@
 # grado_informatica-DGP
 Prácticas de la asignatura Dirección y Gestión de Proyectos de la UGR
-
+*************************************************
+Proyecto creado en NetBeans 8.0.2 y XAMPP.
+*************************************************
 29/03/2015 7:02
 He creado el proyecto con Netbeans. La plantilla que se esta utilizando
 se puede encontrar en http://www.bootply.com/render/90113# . Las
