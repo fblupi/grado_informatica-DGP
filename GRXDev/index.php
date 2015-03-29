@@ -1,27 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php
-    include "BD.php";
-    //Creamos la conexion de base de datos
-    $datos = new BD("localhost", "GRXDev", "1234", "GRXDev");
-    $GLOBALS['sesion_iniciada'] = false;//Variable que indica el estado de sesión
-    $GLOBALS['nombre_perfil'] = 'Perfil';//Cadena para indicar el nombre de usuario
-    
-    /*Comprobamos si se ha obtenido correo y pass por medio de un formulario
-     *en el cas de que se reciba algun dato en ambos se realizará la consulta.
-     * En el caso de que existe el usuario que ha iniciado sesión, asignamos
-     * las variables globales de nombre_perfil y sesion_iniciada.
-     */
-    if (isset($_POST['correo']) && isset($_POST['pass'])) {
-        $nombreusuario = htmlspecialchars($_POST['correo']);
-        $contrasena = htmlspecialchars($_POST['pass']);
-        $result = $datos->Query("select Nombre_usuario from Usuarios where Direccion_correo='$nombreusuario' AND Contrasena='$contrasena'");
-        if (mysql_num_rows($result) > 0) {
-            $GLOBALS['nombre_perfil'] = mysql_result($result, 0);
-            $GLOBALS['sesion_iniciada'] = true;
-        }
-    }
-    ?>
+
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">

@@ -1,3 +1,27 @@
+    <?php
+    include "BD.php";
+    //Creamos la conexion de base de datos
+    $datos = new BD("localhost", "GRXDev", "1234", "GRXDev");
+    $GLOBALS['sesion_iniciada'] = false;//Variable que indica el estado de sesión
+    $GLOBALS['nombre_perfil'] = 'Perfil';//Cadena para indicar el nombre de usuario
+    $GLOBALS['tipo_usuario'] = 0;
+    /*Comprobamos si se ha obtenido correo y pass por medio de un formulario
+     *en el cas de que se reciba algun dato en ambos se realizará la consulta.
+     * En el caso de que existe el usuario que ha iniciado sesión, asignamos
+     * las variables globales de nombre_perfil y sesion_iniciada.
+     */
+    if (isset($_POST['correo']) && isset($_POST['pass'])) {
+        $nombreusuario = htmlspecialchars($_POST['correo']);
+        $contrasena = htmlspecialchars($_POST['pass']);
+        $result = $datos->Query("select Nombre_usuario,Tipo_usuario from Usuarios where Direccion_correo='$nombreusuario' AND Contrasena='$contrasena'");
+        if (mysql_num_rows($result) > 0) {
+            $fila = mysql_fetch_row($result);
+            $GLOBALS['nombre_perfil'] = $fila[0];
+            $GLOBALS['tipo_usuario'] = $fila[1];
+            $GLOBALS['sesion_iniciada'] = true;
+        }
+    }
+    ?>
 <nav class="navbar navbar-fixed-top header">
     <div class="col-md-12">
         <div class="navbar-header">
@@ -30,6 +54,9 @@
                     <li><a href="#"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> <?php echo $GLOBALS['nombre_perfil']; ?></a></li>
                     <li class="nav-divider"></li>
                     <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Configuración</a></li>
+                    <?php if ($GLOBALS['tipo_usuario'] == 1) { ?>
+                    <li><a href=""><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Gestión de usuarios</a></li>
+                    <?php } ?>
                     <li><a href="script_cerrar_sesion.php"><i class="glyphicon glyphicon-eject" style="color:#11dd11;"></i> Cerrar sesión</a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-plus"></i> Más...</a></li>
                 </ul>
