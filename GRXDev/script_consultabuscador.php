@@ -53,7 +53,7 @@ $result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo
                                             ?>  
                                             
                                             <td><button class="btn btn-success" <?php if($validador!=0){ ?> disabled <?php } ?> onClick="location.href = 'script_validar_dueno.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Validar</button></td>
-                                            <td><button class="btn btn-primary" onClick="location.href = 'script_modificar_usuario.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Modificar</button></td>
+                                            <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Ver Perfil</button></td>
                                             <td><button class="btn btn-danger" onClick="location.href = 'script_baja_usuario.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Dar de baja</button></td>
                                             <?php if($row['Tipo_usuario'] != 1){ //No es administrador?>
                                             <td><button class="btn btn-warning" onClick="location.href = 'script_dar_priv_adm.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >+ Admin.</button></td>  

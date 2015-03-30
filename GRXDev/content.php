@@ -15,6 +15,9 @@ if(!empty($categoria)){
         }
 			else if($categoria == 'perfil'){
 				include_once 'perfil.php';
-			}	
+			}
+				else if($categoria == 'modificar'){
+					include_once 'modificar.php';
+				}			
 }
 ?>

@@ -14,8 +14,14 @@
         <?php }} ?>
         <?php 
 		include "BD.php";
-        $datos = new BD("localhost", "root", "", "GRXDev");
-		$result = $datos->Query("select Nombre_usuario,Direccion_correo,Tipo_usuario,ID_Usuario,Nombre,Apellidos,Sexo,Fecha_nacimiento,ubicacion,NIF from Usuarios where ID_Usuario='".$_COOKIE['id_usuario']."'");
+		$id = isset($_GET['ID_Usuario']) ? $_GET['ID_Usuario'] : null;
+		$datos = new BD("localhost", "root", "", "GRXDev");
+		if(empty($id)){
+			$result = $datos->Query("select Nombre_usuario,Direccion_correo,Tipo_usuario,ID_Usuario,Nombre,Apellidos,Sexo,Fecha_nacimiento,ubicacion,NIF from 	Usuarios where ID_Usuario='".$_COOKIE['id_usuario']."'");
+		}
+		else{
+			$result = $datos->Query("select Nombre_usuario,Direccion_correo,Tipo_usuario,ID_Usuario,Nombre,Apellidos,Sexo,Fecha_nacimiento,ubicacion,NIF from 	Usuarios where ID_Usuario='".$id."'");
+		}
 		//if(mysql_num_rows($result) > 0)
 		$fila = mysql_fetch_array($result);
 		?>
@@ -40,7 +46,7 @@
 						<div class="panel-body"><strong style="margin-right:5px;">Ubicacion: </strong><?php echo $fila['ubicacion']?></div>
 						<?php }?>
 						
-						<div class="panel-body"><button class="btn btn-primary" onClick="location.href = 'script_modificar_usuario.php?ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >Modificar</button></div>
+						<div class="panel-body"><button class="btn btn-primary" onClick="location.href = 'index.php?cat=modificar&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >Modificar</button></div>
 					</div>
 					
                 </div>
