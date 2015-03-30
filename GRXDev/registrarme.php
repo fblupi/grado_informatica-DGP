@@ -1,26 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <?php
     $GLOBALS['error_registro'] = false;
 ?>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <title>GRXDev</title>
-        <meta name="generator" content="Bootply" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-                <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <link href="css/styles.css" rel="stylesheet">
-    </head>
-    <body>
-        <?php 
-        //Incluimos el header que contiene el menu de navegación
-        include 'header.php'; 
-        ?>
-
         <!--main-->
         <div class="container" id="main">
             <div class="row">
@@ -61,8 +42,8 @@
                                     <input type="text" name="reg_ubicacion" class="form-control" placeholder="Ubicación">
                                 </div>
                                 <div class="form-group">
-                                    <input type="radio" name="reg_sexo" value="hombre" checked>Hombre
-                                    <input type="radio" name="reg_sexo" value="mujer">Mujer
+                                    <input type="radio" name="reg_sexo" value="Hombre" checked>Hombre
+                                    <input type="radio" name="reg_sexo" value="Mujer">Mujer
                                 </div>
                                 </br>
                                 <div class="form-group">
@@ -97,20 +78,5 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-
-                <?php 
-                //Incluimos footer
-                include 'footer.php'; 
-                ?>  
             </div>
         </div><!--/main-->
-        <?php
-        //Incluimos las ventanas modales de inicio de sesión y quienes somos
-        include 'modales.php'; 
-        ?>
-        <!-- script references -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>

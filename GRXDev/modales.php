@@ -7,7 +7,7 @@
                 <h2 class="text-center"><img src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"><br>Iniciar sesión</h2>
             </div>
             <div class="modal-body">
-                <form class="form col-md-12 center-block" method="post">
+                <form class="form col-md-12 center-block" action="script_iniciar_sesion.php" method="post">
                     <div class="form-group">
                         <input type="text" name="correo" class="form-control input-lg" placeholder="Dirección de correo">
                     </div>
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block" >Iniciar sesión</button>
 
-                        <span class="pull-right"><a href="registrarme.php">Registrarme</a></span>
+                        <span class="pull-right"><a href="index.php?cat=registrarme">Registrarme</a></span>
                     </div>
                 </form>
             </div>

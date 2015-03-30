@@ -9,6 +9,10 @@ if(!empty($categoria)){
 	if($categoria == 'buscador' ){
 		include_once 'buscador.php';
 	}
+        else if($categoria == 'registrarme')
+        {
+            include_once 'registrarme.php';
+        }
 }
 
 
