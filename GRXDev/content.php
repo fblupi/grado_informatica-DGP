@@ -13,5 +13,8 @@ if(!empty($categoria)){
         {
             include_once 'registrarme.php';
         }
+			else if($categoria == 'perfil'){
+				include_once 'perfil.php';
+			}	
 }
 ?>

@@ -59,7 +59,7 @@ if($_COOKIE['sesion_iniciada'] == false)
             <?php if ($_COOKIE['sesion_iniciada'] == true) { ?>
                 <a href="#" style="margin-left:15px;" class="navbar-btn btn btn-default btn-plus dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home" style="color:#dd1111;"></i> Inicio <small><i class="glyphicon glyphicon-chevron-down"></i></small></a>
                 <ul class="nav dropdown-menu">
-                    <li><a href="#"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> <?php echo $_COOKIE['nombre_perfil']; ?></a></li>
+                    <li><a href="index.php?cat=perfil"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> <?php echo $_COOKIE['nombre_perfil']; ?></a></li>
                     <li class="nav-divider"></li>
                     <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Configuración</a></li>
                     <?php if ($_COOKIE['tipo_usuario'] == 1) { ?>
