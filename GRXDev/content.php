@@ -14,7 +14,4 @@ if(!empty($categoria)){
             include_once 'registrarme.php';
         }
 }
-
-
-
 ?>

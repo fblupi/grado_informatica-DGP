@@ -1,20 +1,16 @@
-
-<?php
-    $GLOBALS['error_registro'] = false;
-?>
         <!--main-->
         <div class="container" id="main">
             <div class="row">
-                <?php if ((isset($_POST['correo']) || isset($_POST['pass'])) && mysql_num_rows($result) == 0) { ?>
+                <?php 
+                    if(isset($_GET['error_registro']))//Si existe un error de inicio de sesión se muestra el div de error
+                    {
+                    if($_GET['error_registro'] == true){ ?>
+
                     <div class="col-md-12 col-sm-12">
-                        <div class="alert alert-info alert-dismissable">Error al iniciar sesión.</div>
-                    </div>
-                <?php } ?>
-                <?php if ($GLOBALS['error_registro'] == true) { ?>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="alert alert-info alert-dismissable">Error al registrarse, compruebe los campos.</div>
-                    </div>
-                <?php } ?>
+                        <div class="alert alert-danger alert-dismissable">Error al iniciar sesi�n.</div>
+                    </div> 
+
+                <?php }} ?>
                 <div class="col-md-6 col-sm-6">
                     <div class="panel panel-default">
                         <div class="panel-heading"><h4>Registrarme</h4></div>
@@ -58,6 +54,9 @@
                         <div class="panel-heading"><h4>Registrarme como dueño</h4></div>
                         <div class="panel-body">
                             <form class="form col-md-8 center-block" action="script_registrarme_dueno.php" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="reg_usuario" class="form-control" placeholder="Nombre de usuario*">
+                                </div>
                                 <div class="form-group">
                                     <input type="text" name="reg_nombre" class="form-control" placeholder="Nombre*">
                                 </div>

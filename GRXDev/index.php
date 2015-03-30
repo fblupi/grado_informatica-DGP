@@ -1,7 +1,7 @@
 
          <?php 
         //Incluimos el header que contiene el menu de navegación
-        include 'header.php'; 
+        include 'header.php';
         //Incluimos el cuerpo
         include 'content.php';
         //Incluimos footer

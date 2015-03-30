@@ -9,7 +9,7 @@ $fecha = isset($_GET['fecha']) ? $_GET['fecha'] : '';
 $ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
 $datos = new BD("localhost", "root", "", "GRXDev");
 
-$result = $datos->Query("SELECT Nombre_usuario,Nombre,Apellidos,Sexo,Tipo_usuario FROM usuarios WHERE sexo LIKE '%" . $sexo . "%' and Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Apellidos LIKE '%" . $apellidos . "%' and Fecha_Nacimiento LIKE '%" . $fecha . "%' and Ubicacion LIKE '%" . $ubicacion . "%'");
+$result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo,Tipo_usuario FROM usuarios WHERE sexo LIKE '%" . $sexo . "%' and Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Apellidos LIKE '%" . $apellidos . "%' and Fecha_Nacimiento LIKE '%" . $fecha . "%' and Ubicacion LIKE '%" . $ubicacion . "%'");
 ?>
 <div class="col-md-12 col-sm-12">
     <div class="panel panel-default">
@@ -21,10 +21,13 @@ $result = $datos->Query("SELECT Nombre_usuario,Nombre,Apellidos,Sexo,Tipo_usuari
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Usuario</th>
                                         <th>Nombre</th>
                                         <th>Apellidos</th>
                                         <th>Sexo</th>
+                                        <th></th>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -35,17 +38,32 @@ $result = $datos->Query("SELECT Nombre_usuario,Nombre,Apellidos,Sexo,Tipo_usuari
                                     while ($row = mysql_fetch_array($result)) {
                                         ?>
                                         <tr>
+                                            <td><?php echo $row['ID_Usuario'] ?></td>
                                             <td><?php echo $row['Nombre_usuario'] ?></td>
                                             <td><?php echo$row['Nombre'] ?></td>
                                             <td><?php echo$row['Apellidos'] ?></td>
                                             <td><?php echo$row['Sexo'] ?></td>
-                                            <td><button class="btn btn-success" onClick="location.href = 'script_validar.php'" >Validar</button></td>
-                                            <td><button class="btn btn-primary" onClick="location.href = 'script_modificar_usuario.php?nombre_usuario=<?php echo $row['Nombre_usuario'] ?>'" >Modificar</button></td>
-                                            <td><button class="btn btn-danger" onClick="location.href = 'script_baja_usuario.php?nombre_usuario=<?php echo $row['Nombre_usuario'] ?>'" >Dar de baja</button></td>
-                                            <?php if($row['Tipo_usuario'] != 1){?>
-                                            <td><button class="btn btn-warning" onClick="location.href = 'script_dar_priv_adm.php?nombre_usuario=<?php echo $row['Nombre_usuario'] ?>'" >Convertir en Administrador</button></td>  
+                                            
+                                            <?php 
+                                            //Obtenemos los atributos del usuario a comprobar; En este caso si tiene validador
+                                            $id_usuario = $row['ID_Usuario'];
+                                            $atributos_usuario = $datos->Query("Select Validador FROM usuarios WHERE ID_Usuario='$id_usuario'");
+                                            $fila = mysql_fetch_row($atributos_usuario);
+                                            $validador = $fila[0];
+                                            ?>  
+                                            
+                                            <td><button class="btn btn-success" <?php if($validador!=0){ ?> disabled <?php } ?> onClick="location.href = 'script_validar_dueno.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Validar</button></td>
+                                            <td><button class="btn btn-primary" onClick="location.href = 'script_modificar_usuario.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Modificar</button></td>
+                                            <td><button class="btn btn-danger" onClick="location.href = 'script_baja_usuario.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Dar de baja</button></td>
+                                            <?php if($row['Tipo_usuario'] != 1){ //No es administrador?>
+                                            <td><button class="btn btn-warning" onClick="location.href = 'script_dar_priv_adm.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >+ Admin.</button></td>  
                                             <?php } else { ?>
-                                            <td><button class="btn btn-warning" onClick="location.href = 'script_quitar_priv_adm.php?nombre_usuario=<?php echo $row['Nombre_usuario'] ?>'" >Deja de ser administrador</button></td>
+                                            <td><button class="btn btn-warning" onClick="location.href = 'script_quitar_priv_adm.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >- Admin.</button></td>
+                                            <?php } ?>
+                                            <?php if($row['Tipo_usuario']!= 2){ //Distinto de adm y validador?>
+                                            <td><button class="btn btn-info" onClick="location.href = 'script_dar_priv_validador.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >+ Valid.</button></td>  
+                                            <?php } else { ?>
+                                            <td><button class="btn btn-info" onClick="location.href = 'script_quitar_priv_validador.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >- Valid.</button></td>
                                             <?php } ?>
                                         </tr>
                                     <?php } ?>

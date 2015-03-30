@@ -9,9 +9,10 @@
         $datos = new BD("localhost", "root", "", "GRXDev");
         $nombreusuario = htmlspecialchars($_POST['correo']);
         $contrasena = htmlspecialchars($_POST['pass']);
-        $result = $datos->Query("select Nombre_usuario,Tipo_usuario from Usuarios where Direccion_correo='$nombreusuario' AND Contrasena='$contrasena'");
+        $result = $datos->Query("select Nombre_usuario,Tipo_usuario, ID_Usuario from Usuarios where Direccion_correo='$nombreusuario' AND Contrasena='$contrasena'");
         if (mysql_num_rows($result) > 0) {
             $fila = mysql_fetch_row($result);
+            setcookie('id_usuario',$fila[2]);
             setcookie('nombre_perfil',$fila[0]);
             setcookie('tipo_usuario',$fila[1]);
             setcookie('sesion_iniciada',true);

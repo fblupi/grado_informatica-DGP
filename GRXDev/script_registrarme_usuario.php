@@ -17,15 +17,12 @@ if (isset($_POST['reg_usuario']) && isset($_POST['reg_correo']) && isset($_POST[
     $result = $datos->Query("insert into Usuarios (Nombre_usuario,Direccion_correo,contrasena,nombre,apellidos,sexo,fecha_nacimiento,ubicacion) values ('$usuario','$correo','$pass','$nombre','$apellidos','$sexo','$fechanac','$ubicacion')");
     //Comprobamos que se ha realizado el insert correctamente
     if ($result) {
-        $GLOBALS['error_registro'] = false;
         header('location: index.php');
     } else {//Si no, activamos la variable de error de registro para y volvemos a registrarme.php
-        $GLOBALS['error_registro'] = true;
-        header('location: registrarme.php');
+        header('location: registrarme.php?error_registro=true');
     }
 } else {
-    $GLOBALS['error_registro'] = true;
-    header('location: registrarme.php');
+    header('location: registrarme.php?error_registro=true');
 }
                 
 
