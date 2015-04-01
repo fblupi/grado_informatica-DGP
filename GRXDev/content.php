@@ -18,6 +18,9 @@ if(!empty($categoria)){
 			}
 				else if($categoria == 'modificar'){
 					include_once 'modificar.php';
-				}			
+				}
+					elseif($categoria=='buscadord'){
+						include_once 'buscador_duenos.php';
+					}
 }
 ?>

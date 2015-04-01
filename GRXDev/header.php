@@ -64,6 +64,7 @@ if($_COOKIE['sesion_iniciada'] == false)
                     <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Configuración</a></li>
                     <?php if ($_COOKIE['tipo_usuario'] == 1) { ?>
                     <li><a href="index.php?cat=buscador"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Gestión de usuarios</a></li>
+					<li><a href="index.php?cat=buscadord"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Gestión de Dueños</a></li>
                     <?php } ?>
                     <li><a href="script_cerrar_sesion.php"><i class="glyphicon glyphicon-eject" style="color:#11dd11;"></i> Cerrar sesión</a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-plus"></i> Más...</a></li>

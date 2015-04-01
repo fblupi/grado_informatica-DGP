@@ -1,15 +1,22 @@
 <?php
 include "BD.php";
-$sexo = isset($_GET['sexo']) ? $_GET['sexo'] : '';
+$nif = isset($_GET['nif']) ? $_GET['nif'] : '';
 $nick = isset($_GET['nick']) ? $_GET['nick'] : '';
 $email = isset($_GET['email']) ? $_GET['email'] : '';
 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
-$apellidos = isset($_GET['apellidos']) ? $_GET['apellidos'] : '';
-$fecha = isset($_GET['fecha']) ? $_GET['fecha'] : '';
-$ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
-$datos = new BD("localhost", "root", "", "GRXDev");
 
-$result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo,Tipo_usuario FROM usuarios WHERE sexo LIKE '%" . $sexo . "%' and Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Apellidos LIKE '%" . $apellidos . "%' and Fecha_Nacimiento LIKE '%" . $fecha . "%' and Ubicacion LIKE '%" . $ubicacion . "%' and Tipo_usuario!=5");
+$validado = isset($_GET['validado']) ? $_GET['validado'] : '';
+$datos = new BD("localhost", "root", "", "GRXDev");
+if($validado==''){
+$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5");
+}
+elseif($validado=='si'){
+$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5 and Validador!=0");
+}
+else{
+$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5 and Validador=0");
+}
+
 ?>
 <div class="col-md-12 col-sm-12">
     <div class="panel panel-default">
@@ -22,10 +29,10 @@ $result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+										<th>NIF</th>
                                         <th>Usuario</th>
                                         <th>Nombre</th>
-                                        <th>Apellidos</th>
-                                        <th>Sexo</th>
+                                        <th>Validador</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -39,10 +46,11 @@ $result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo
                                         ?>
                                         <tr>
                                             <td><?php echo $row['ID_Usuario'] ?></td>
+											<td><?php echo $row['NIF'] ?></td>
                                             <td><?php echo $row['Nombre_usuario'] ?></td>
                                             <td><?php echo$row['Nombre'] ?></td>
-                                            <td><?php echo$row['Apellidos'] ?></td>
-                                            <td><?php echo$row['Sexo'] ?></td>
+                                            <td><?php echo$row['Validador'] ?></td>
+                                            <td></td>
                                             
                                             <?php 
                                             //Obtenemos los atributos del usuario a comprobar; En este caso si tiene validador
@@ -52,7 +60,7 @@ $result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo
                                             $validador = $fila[0];
                                             ?>  
                                             
-                                            <td></td>
+                                            <td><button class="btn btn-success" <?php if($validador!=0){ ?> disabled <?php } ?> onClick="location.href = 'script_validar_dueno.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Validar</button></td>
                                             <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Ver Perfil</button></td>
                                             <td><button class="btn btn-danger" onClick="location.href = 'script_baja_usuario.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Dar de baja</button></td>
                                             <?php if($row['Tipo_usuario'] != 1){ //No es administrador?>

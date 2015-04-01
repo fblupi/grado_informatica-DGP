@@ -10,7 +10,7 @@
                 <div class="panel-heading"><h4>Buscar Usuario</h4></div>
                 <div class="panel-body">
                     <div class="col-md-3 col-sm-3">    
-                    <label for="nick">Nick</label>
+                    <label for="nick">Nombre de usuario</label>
                     <input type="text" id="nick" name="nick" class="form-control" onkeyup="MostrarConsulta();">
                     </div>
                     <div class="col-md-3 col-sm-3">  
