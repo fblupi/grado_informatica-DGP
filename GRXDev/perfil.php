@@ -12,6 +12,33 @@
         </div> 
         
         <?php }} ?>
+		<?php //para los fallos a la hora de modificar
+        if(isset($_GET['fallo']))
+        {
+        if($_GET['fallo'] == "hueco"){ ?>
+        
+        <div class="col-md-12 col-sm-12">
+            <div class="alert alert-danger alert-dismissable">No ha rellenado todos los campos necesarios.</div>
+        </div> 
+        
+        <?php }
+		if($_GET['fallo'] == "contra"){ ?>
+		
+		<div class="col-md-12 col-sm-12">
+            <div class="alert alert-danger alert-dismissable">Las contraseñas no coinciden</div>
+        </div> 
+		<?php }} ?>
+		<?php 
+        if(isset($_GET['exito']))//Si existe un error de inicio de sesión se muestra el div de error
+        {
+        if($_GET['exito'] == true){ ?>
+        
+        <div class="col-md-12 col-sm-12">
+            <div class="alert alert-danger alert-dismissable">Se han realizado los cambios.</div>
+        </div> 
+        
+        <?php }} ?>
+		
         <?php 
 		include "BD.php";
 		$id = isset($_GET['ID_Usuario']) ? $_GET['ID_Usuario'] : null;
@@ -36,6 +63,7 @@
 						<?php }?>
 						<div class="panel-body"><strong style="margin-right:5px;">Nombre de usuario:  </strong><?php echo $fila['Nombre_usuario']?></div>
 						<div class="panel-body"><strong style="margin-right:5px;">Email:</strong><?php echo $fila['Direccion_correo']?></div>
+						<div class="panel-body"><strong style="margin-right:5px;">Contraseña:  </strong>****</div>
 						<div class="panel-body"><strong style="margin-right:5px;">Nombre: </strong><?php echo $fila['Nombre']?></div>
 						<?php
 							if($fila['Tipo_usuario']!=5){
