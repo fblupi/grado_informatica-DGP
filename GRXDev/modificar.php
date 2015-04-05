@@ -67,9 +67,9 @@
 						
 						<input type="hidden" value=<?php echo $fila['ID_Usuario'] ?> name="id"></input>
 						<input type="hidden" value=<?php echo $fila['Tipo_usuario'] ?> name="tipo"></input>
-						<div class="panel-body"><button class="btn btn-primary" type="submit" id="enviar" >Guardar</button>
-						<button class="btn btn-primary" type="reset" id="enviar" >No Guardar</button></div>
-						</form>
+						<div class="panel-body"><button class="btn btn-primary" type="submit" id="enviar" >Guardar</button></div></form>
+						<div class="panel-body" style="margin-top:-2%;"><button class="btn btn-primary" onClick="location.href ='index.php?cat=perfil'" >No Guardar</button></div>
+						
 						
 					</div>
 					

@@ -36,3 +36,21 @@ function MostrarConsulta(){
 	}
 	ajax.send(null);
 }
+
+function MostrarConsultadueno(){
+	divResultado = document.getElementById('resultado_busqueda');
+	nif = document.getElementById('nif').value;
+	nick = document.getElementById('nick').value;
+	email = document.getElementById('email').value;
+	nombre = document.getElementById('nombre').value;
+	validado = document.getElementById('validado').value;
+	
+	ajax=objetoAjax();
+	ajax.open("GET", "script_consultabuscadordueno.php?nif="+nif+"&nick="+nick+"&email="+email+"&nombre="+nombre+"&validado="+validado);
+	ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+			divResultado.innerHTML = ajax.responseText;
+		}
+	}
+	ajax.send(null);
+}

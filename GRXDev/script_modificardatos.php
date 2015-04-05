@@ -20,7 +20,7 @@ $datos = new BD("localhost", "root", "", "GRXDev");
 	if($tipo== 5 && $_COOKIE['tipo_usuario']==1 && !empty($nick) && !empty($nombre)){
 		$result = $datos->Query("UPDATE usuarios SET Nombre_usuario='".$nick."',Nombre='".$nombre."' where ID_Usuario=".$id."");
 		if ($result) {
-			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=true');
+			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=modi');
 		}
 	}
 	//si algun campo obligatorio no esta relleno
@@ -31,7 +31,7 @@ $datos = new BD("localhost", "root", "", "GRXDev");
 	if($tipo!= 5 && $_COOKIE['tipo_usuario']==1 && !empty($nick) && !empty($nombre) && !empty($apellidos)&& !empty($ubicacion)){
 		$result = $datos->Query("update usuarios set Nombre_usuario='".$nick."',Nombre='".$nombre."',Apellidos='".$apellidos."',Ubicacion='".$ubicacion."' where ID_Usuario=".$id."");
 		if ($result) {
-			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=true');
+			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=modi');
 		}
 	}
 	//si algun campo obligatorio no esta relleno
@@ -54,7 +54,7 @@ $datos = new BD("localhost", "root", "", "GRXDev");
 			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&fallo=hueco');//volvemos al perfil con un error
 		}
 		if ($result) {
-			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=true');
+			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=modi');
 		}
 	}
 	elseif($tipo!= 5 && $_COOKIE['tipo_usuario']!=1 && (empty($email) || empty($nombre) || empty($apellidos) || empty($ubicacion) || empty($fecha) || empty($sexo) )){
@@ -76,7 +76,7 @@ $datos = new BD("localhost", "root", "", "GRXDev");
 		header('location: index.php?cat=perfil&ID_Usuario='.$id.'&fallo=hueco');//volvemos al perfil con un error
 	}
 	if ($result) {
-		header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=true');
+		header('location: index.php?cat=perfil&ID_Usuario='.$id.'&exito=modi');
 		}
 	}
 	elseif($tipo== 5 && $_COOKIE['tipo_usuario']!=1 && (empty($email) || empty($nombre) || empty($nif))){

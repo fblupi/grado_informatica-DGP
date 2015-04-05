@@ -29,12 +29,12 @@
         </div> 
 		<?php }} ?>
 		<?php 
-        if(isset($_GET['exito']))//Si existe un error de inicio de sesión se muestra el div de error
+        if(isset($_GET['exito']))//Si se han realizado la modificacion bien
         {
-        if($_GET['exito'] == true){ ?>
+        if($_GET['exito'] == "modi"){ ?>
         
         <div class="col-md-12 col-sm-12">
-            <div class="alert alert-danger alert-dismissable">Se han realizado los cambios.</div>
+            <div class="alert alert-success">Se han realizado los cambios.</div>
         </div> 
         
         <?php }} ?>
