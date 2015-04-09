@@ -9,12 +9,17 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
 $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
 $contra = isset($_POST['contra']) ? $_POST['contra'] : '';
 $ncontra = isset($_POST['ncontra']) ? $_POST['ncontra'] : '';
+$actualcontra = isset($_POST['actualcontra']) ? $_POST['actualcontra'] : '';
 $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : '';
 $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : '';
 $ubicacion = isset($_POST['ubicacion']) ? $_POST['ubicacion'] : '';
 $nif = isset($_POST['nif']) ? $_POST['nif'] : '';
 //Realizamos la conexión con la base de datos
 $datos = new BD("localhost", "root", "", "GRXDev");
+
+//Realizamos un select para extraer la contraseña actual para comprobarla con el campo actualcontra
+$busqueda = $datos->Query("select Contrasena from Usuarios where ID_Usuario='".$id."'");
+$fila = mysql_fetch_array($busqueda);
 
 //Primero comprobamos los dueños cuando los modifica el administrador
 	if($tipo== 5 && $_COOKIE['tipo_usuario']==1 && !empty($nick) && !empty($nombre)){
@@ -41,7 +46,11 @@ $datos = new BD("localhost", "root", "", "GRXDev");
 	
 	//Primero comprobamos los usuarios que no sean dueños cuando los modifica el propio usuario
 	if($tipo!= 5 && $_COOKIE['tipo_usuario']!=1 && !empty($email) && !empty($nombre) && !empty($apellidos)&& !empty($ubicacion)&& !empty($fecha)&& !empty($sexo) ){
-		if( !empty($contra)&& !empty($ncontra) && $contra==$ncontra){ //si la contraseñas estan rellena y coinciden
+		if($fila['Contrasena']!=$actualcontra && (!empty($contra) || !empty($ncontra))){
+			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&fallo=actual');//volvemos al perfil con un error
+		}
+		
+		elseif( !empty($contra)&& !empty($ncontra) && $contra==$ncontra){ //si la contraseñas estan rellena y coinciden
 			$result = $datos->Query("update usuarios set Direccion_correo='".$email."',Nombre='".$nombre."',Contrasena='".$contra."',Apellidos='".$apellidos."',Ubicacion='".$ubicacion."' ,Fecha_nacimiento='".$fecha."' ,Sexo='".$sexo."' where ID_Usuario=".$id."");
 		}
 		elseif(!empty($contra) && !empty($ncontra) && $contra!=$ncontra){ //si la contraseñas estan rellena pero no coinciden
@@ -63,7 +72,11 @@ $datos = new BD("localhost", "root", "", "GRXDev");
 
 	//Primero comprobamos los usuarios que no sean dueños cuando los modifica el propio dueño
 	if($tipo== 5 && $_COOKIE['tipo_usuario']!=1 && !empty($email) && !empty($nombre) && !empty($nif)){
-	if( !empty($contra)&& !empty($ncontra) && $contra==$ncontra){ //si la contraseñas estan rellena y coinciden
+		if($fila['Contrasena']!=$actualcontra && (!empty($contra) || !empty($ncontra))){
+			header('location: index.php?cat=perfil&ID_Usuario='.$id.'&fallo=actual');//volvemos al perfil con un error
+		}
+	
+	elseif( !empty($contra)&& !empty($ncontra) && $contra==$ncontra){ //si la contraseñas estan rellena y coinciden
 		$result = $datos->Query("update usuarios set Direccion_correo='".$email."',Nombre='".$nombre."',Contrasena='".$contra."',NIF='".$nif."' where ID_Usuario=".$id."");
 	}
 	elseif(!empty($contra) && !empty($ncontra) && $contra!=$ncontra){ //si la contraseñas estan rellena pero no coinciden
@@ -85,4 +98,4 @@ $datos = new BD("localhost", "root", "", "GRXDev");
 	
 
 
-?></p>
+?>

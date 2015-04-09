@@ -9,7 +9,12 @@ $fecha = isset($_GET['fecha']) ? $_GET['fecha'] : '';
 $ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
 $datos = new BD("localhost", "root", "", "GRXDev");
 
+if($sexo=='' && $nick=='' && $email=='' && $nombre=='' && $apellidos=='' && $fecha=='' && $ubicacion==''){
+	$result=null;
+}
+else{
 $result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo,Tipo_usuario FROM usuarios WHERE sexo LIKE '%" . $sexo . "%' and Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Apellidos LIKE '%" . $apellidos . "%' and Fecha_Nacimiento LIKE '%" . $fecha . "%' and Ubicacion LIKE '%" . $ubicacion . "%' and Tipo_usuario!=5");
+}
 ?>
 <div class="col-md-12 col-sm-12">
     <div class="panel panel-default">
@@ -77,7 +82,7 @@ $result = $datos->Query("SELECT ID_Usuario, Nombre_usuario,Nombre,Apellidos,Sexo
                 <?php
             } else {
                 ?>
-                <p>No se ha encontrado a nadie con esos parametros</p>
+                <p></p>
 
                 <?php
             }

@@ -22,6 +22,14 @@
         </div> 
         
         <?php }
+		//para los fallos al introducir la contraseña actual
+        if($_GET['fallo'] == "actual"){ ?>
+        
+        <div class="col-md-12 col-sm-12">
+            <div class="alert alert-danger alert-dismissable">Contraseña actual Incorrecta.</div>
+        </div> 
+        
+        <?php }
 		if($_GET['fallo'] == "contra"){ ?>
 		
 		<div class="col-md-12 col-sm-12">

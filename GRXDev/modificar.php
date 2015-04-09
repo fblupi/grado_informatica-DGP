@@ -53,6 +53,7 @@
 							<?php } ?>
 								<div class="panel-body"><strong style="margin-right:5px;">Nombre de usuario:  </strong><?php echo $fila['Nombre_usuario']?></div>
 								<div class="panel-body"><strong style="margin-right:5px;">Email:</strong><textarea rows="1" cols="50" name="email"><?php echo $fila['Direccion_correo']?></textarea></div>
+								<div class="panel-body"><strong style="margin-right:5px;">Contraseña Actual: </strong><textarea rows="1" cols="50" name="actualcontra"></textarea></div>
 								<div class="panel-body"><strong style="margin-right:5px;">Nueva Contraseña: </strong><textarea rows="1" cols="50" name="contra"></textarea></div>
 								<div class="panel-body"><strong style="margin-right:5px;">Repita Contraseña nueva: </strong><textarea rows="1" cols="50" name="ncontra"></textarea></div>
 								<div class="panel-body"><strong style="margin-right:5px;">Nombre: </strong><textarea rows="1" cols="50" name="nombre"><?php echo $fila['Nombre']?></textarea></div>
@@ -68,7 +69,7 @@
 						<input type="hidden" value=<?php echo $fila['ID_Usuario'] ?> name="id"></input>
 						<input type="hidden" value=<?php echo $fila['Tipo_usuario'] ?> name="tipo"></input>
 						<div class="panel-body"><button class="btn btn-primary" type="submit" id="enviar" >Guardar</button></div></form>
-						<div class="panel-body" style="margin-top:-2%;"><button class="btn btn-primary" onClick="location.href ='index.php?cat=perfil'" >No Guardar</button></div>
+						<div class="panel-body" style="margin-top:-2%;"><button class="btn btn-primary" onClick="location.href ='index.php?cat=perfil&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >No Guardar</button></div>
 						
 						
 					</div>

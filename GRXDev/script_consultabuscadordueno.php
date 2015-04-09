@@ -7,14 +7,17 @@ $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 
 $validado = isset($_GET['validado']) ? $_GET['validado'] : '';
 $datos = new BD("localhost", "root", "", "GRXDev");
-if($validado==''){
-$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5");
+if($validado=='' && $nif=='' && $nick=='' && $email=='' && $nombre==''){
+	$result=null;
+}
+elseif($validado==''){
+$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE NIF LIKE '%" . $nif . "%' and Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5");
 }
 elseif($validado=='si'){
-$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5 and Validador!=0");
+$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE NIF LIKE '%" . $nif . "%' and Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5 and Validador!=0");
 }
 else{
-$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5 and Validador=0");
+$result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuario,Validador FROM usuarios WHERE NIF LIKE '%" . $nif . "%' and Nombre_usuario LIKE '%" . $nick . "%' and Direccion_correo LIKE '%" . $email . "%' and Nombre LIKE '%" . $nombre . "%' and Tipo_usuario=5 and Validador=0");
 }
 
 ?>
@@ -63,16 +66,8 @@ $result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuar
                                             <td><button class="btn btn-success" <?php if($validador!=0){ ?> disabled <?php } ?> onClick="location.href = 'script_validar_dueno.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Validar</button></td>
                                             <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Ver Perfil</button></td>
                                             <td><button class="btn btn-danger" onClick="location.href = 'script_baja_usuario.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >Dar de baja</button></td>
-                                            <?php if($row['Tipo_usuario'] != 1){ //No es administrador?>
-                                            <td><button class="btn btn-warning" onClick="location.href = 'script_dar_priv_adm.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >+ Admin.</button></td>  
-                                            <?php } else { ?>
-                                            <td><button class="btn btn-warning" onClick="location.href = 'script_quitar_priv_adm.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >- Admin.</button></td>
-                                            <?php } ?>
-                                            <?php if($row['Tipo_usuario']!= 2){ //Distinto de adm y validador?>
-                                            <td><button class="btn btn-info" onClick="location.href = 'script_dar_priv_validador.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >+ Valid.</button></td>  
-                                            <?php } else { ?>
-                                            <td><button class="btn btn-info" onClick="location.href = 'script_quitar_priv_validador.php?ID_Usuario=<?php echo $row['ID_Usuario'] ?>'" >- Valid.</button></td>
-                                            <?php } ?>
+											<td></td>
+											<td></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -85,7 +80,7 @@ $result = $datos->Query("SELECT NIF,ID_Usuario, Nombre_usuario,Nombre,Tipo_usuar
                 <?php
             } else {
                 ?>
-                <p>No se ha encontrado a nadie con esos parametros</p>
+                <p></p>
 
                 <?php
             }

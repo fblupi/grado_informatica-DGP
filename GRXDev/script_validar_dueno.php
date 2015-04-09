@@ -10,15 +10,15 @@ if (isset($_GET['ID_Usuario']) && isset($_COOKIE['id_usuario']))
     $result = $datos->Query("update Usuarios set Validador='$id_usuario_sesion' where ID_Usuario='$id'");
     //Comprobamos que se ha realizado el insert correctamente
     if ($result) {
-        header('location: index.php?cat=buscador');
+        header('location: index.php?cat=buscadord');
     }
     else
     {
-        header('location: index.php?cat=buscador');
+        header('location: index.php?cat=buscadord');
     }
 }
 else
 {
-    header('location: index.php?cat=buscador');
+    header('location: index.php?cat=buscadord');
 }
     

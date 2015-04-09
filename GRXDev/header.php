@@ -34,7 +34,7 @@ if($_COOKIE['sesion_iniciada'] == false)
     <div class="col-md-12">
         <div class="navbar-header">
 
-            <a href="index.php"><img src="images/GRX-DEV.gif" width="150" height="50" alt="GRXDev"></a>
+            <a href="index.php"><img src="images/Acercando GRANADA [SMALL].png" width="150" height="50" alt="GRXDev"></a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
                 <i class="glyphicon glyphicon-search"></i>
             </button>

@@ -38,7 +38,7 @@
             </div>
             <div class="modal-body">
                 <div class="col-md-12 text-center">
-                    <a href="">blablablabla</a>
+                    <a href="">Acercando Granada</a>
                     <br><br>
                     <a href="https://github.com/fblupi/grado_informatica-DGP">GitHub</a>
                 </div>
