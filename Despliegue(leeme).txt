@@ -1,0 +1,12 @@
+Una vez instalados nuestro servidor apache y mysql 
+debemos incorporar la base de datos de la web en nuestro servidor, para ello:
+-Entramos a phpmyadmin
+-Creamos una nueva base de datos llamada grxdev
+-Dentro de esta nueva base de datos pulsamos el botón importar
+-Seleccionamos el fichero grxdev_30032015.sql y le damos a continuar
+
+Una vez importada la base de datos ahora tenemos que introducir en nuestro
+servidor apache la carpeta GRXDev la cual contiene la pagina web.
+
+Para visualizar la página tendríamos que introducir en el navegador lo siguiente:
+http://localhost/GRXDev/
