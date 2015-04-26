@@ -82,6 +82,7 @@ if($_COOKIE['sesion_iniciada'] == false)
         <div class="collapse navbar-collapse" id="navbar-collapse2">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="index.php">Contenido</a></li>
+				<li ><a href="index.php?cat=buscador_alo">Buscar Alojamientos</a></li>
                 <?php if ($_COOKIE['sesion_iniciada'] == false) { ?><li><a href="#loginModal" role="button" data-toggle="modal">Iniciar sesión</a></li><?php } ?>
                 <li><a href="#aboutModal" role="button" data-toggle="modal">¿Quiénes somos?</a></li>
             </ul>

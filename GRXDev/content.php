@@ -22,5 +22,8 @@ if(!empty($categoria)){
 					elseif($categoria=='buscadord'){
 						include_once 'buscador_duenos.php';
 					}
+					elseif($categoria=='buscador_alo'){
+						include_once 'buscadorAlojamiento.php';
+					}
 }
 ?>

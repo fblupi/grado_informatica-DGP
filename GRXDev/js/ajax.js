@@ -54,3 +54,26 @@ function MostrarConsultadueno(){
 	}
 	ajax.send(null);
 }
+function MostrarConsultalojamiento(){
+	divResultado = document.getElementById('resultado_busqueda');
+	nombre = document.getElementById('nombre').value;
+	ubicacion = document.getElementById('ubicacion').value;
+	tipo = document.getElementById('tipo').value;
+	piscina = document.getElementById('piscina').value;
+	wifi = document.getElementById('wifi').value;
+	spa = document.getElementById('spa').value;
+	desayuno = document.getElementById('desayuno').value;
+	nhabitacion = document.getElementById('nhabitacion').value;
+	cafeteria = document.getElementById('cafeteria').value;
+	discoteca = document.getElementById('discoteca').value;
+	pista = document.getElementById('pista').value;
+	
+	ajax=objetoAjax();
+	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista);
+	ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+			divResultado.innerHTML = ajax.responseText;
+		}
+	}
+	ajax.send(null);
+}
