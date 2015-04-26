@@ -25,5 +25,8 @@ if(!empty($categoria)){
 					elseif($categoria=='buscador_alo'){
 						include_once 'buscadorAlojamiento.php';
 					}
+					elseif($categoria=='buscador_habi'){
+						include_once 'buscadorHabitacion.php';
+					}
 }
 ?>

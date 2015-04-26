@@ -77,3 +77,28 @@ function MostrarConsultalojamiento(){
 	}
 	ajax.send(null);
 }
+function MostrarConsultahabitacion(){
+	divResultado = document.getElementById('resultado_busqueda');
+	wifi = document.getElementById('wifi').value;
+	ncamas = document.getElementById('ncamas').value;
+	bano = document.getElementById('bano').value;
+	tele = document.getElementById('tele').value;
+	caja = document.getElementById('caja').value;
+	armario = document.getElementById('armario').value;
+	
+	/*spa = document.getElementById('spa').value;
+	desayuno = document.getElementById('desayuno').value;
+	nhabitacion = document.getElementById('nhabitacion').value;
+	cafeteria = document.getElementById('cafeteria').value;
+	discoteca = document.getElementById('discoteca').value;
+	pista = document.getElementById('pista').value;*/
+	
+	ajax=objetoAjax();
+	ajax.open("GET", "script_consultahabitacion.php?wifi="+wifi+"&ncamas="+ncamas+"&bano="+bano+"&tele="+tele+"&caja="+caja+"&armario="+armario);
+	ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+			divResultado.innerHTML = ajax.responseText;
+		}
+	}
+	ajax.send(null);
+}
