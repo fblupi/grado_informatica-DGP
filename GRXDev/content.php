@@ -28,5 +28,11 @@ if(!empty($categoria)){
 					elseif($categoria=='buscador_habi'){
 						include_once 'buscadorHabitacion.php';
 					}
+					elseif($categoria=='novali'){
+						include_once 'informenovali.php';
+					}
+					elseif($categoria=='vali'){
+						include_once 'informevali.php';
+					}
 }
 ?>
