@@ -46,13 +46,13 @@
                     <div class="col-md-3 col-sm-3">  
 					
                     </div>
-					<div class="clearfix"></div>
-					<?php //Empezamos con las caracteristias?>
 					
-                    <hr>
-					<h3>Caracteristicas</h3>
+					<div class="col-md-12 col-sm-12">  
+					<h3>Caracteristicas de Alojamiento</h3>
+					</div>
 					<div class="col-md-3 col-sm-3">  
 					<label for="piscina">Piscina</label>
+					<button class="btn btn-primary" id="piscina" value="1" onChange="MostrarConsultalojamiento();" >Ver Mas</button>
                     <select name="piscina" id="piscina" class="form-control" onchange="MostrarConsultalojamiento();">
                         <option value="">--</option>
                         <option value="1">Si</option>
@@ -115,8 +115,59 @@
                         <option value="">No</option>
                     </select>
 					</div>
-                    <br/>
-
+                    <br/><br/>
+					<!-- Caracteristicas de habitacion-->
+					<div class="col-md-12 col-sm-12">  
+					<h3>Caracteristicas de habitacion</h3>
+					</div>
+					<div class="col-md-3 col-sm-3">  
+					<label for="wifih">Wi-fi</label>
+                    <select name="wifih" id="wifih" class="form-control" onchange="MostrarConsultalojamiento();">
+                        <option value="">--</option>
+                        <option value="3">Si</option>
+                        <option value="">No</option>
+                    </select>
+					</div>
+					<div class="col-md-3 col-sm-3">  
+					<label for="ncamas">Numero de camas</label>
+                    <select name="ncamas" id="ncamas" class="form-control" onchange="MostrarConsultalojamiento();">
+                        <option value="">--</option>
+                        <option value="6">Si</option>
+                        <option value="">No</option>
+                    </select>
+					</div>
+					<div class="col-md-3 col-sm-3">  
+					<label for="bano">Baño</label>
+                    <select name="bano" id="bano" class="form-control" onchange="MostrarConsultalojamiento();">
+                        <option value="">--</option>
+                        <option value="9">Si</option>
+                        <option value="">No</option>
+                    </select>
+					</div>
+					<div class="col-md-3 col-sm-3">  
+					<label for="tele">Television</label>
+                    <select name="tele" id="tele" class="form-control" onchange="MostrarConsultalojamiento();">
+                        <option value="">--</option>
+                        <option value="10">Si</option>
+                        <option value="">No</option>
+                    </select>
+					</div>
+					<div class="col-md-3 col-sm-3">  
+					<label for="caja">Caja Fuerte</label>
+                    <select name="caja" id="caja" class="form-control" onchange="MostrarConsultalojamiento();">
+                        <option value="">--</option>
+                        <option value="11">Si</option>
+                        <option value="">No</option>
+                    </select>
+					</div>
+					<div class="col-md-3 col-sm-3">  
+					<label for="armario">Armario</label>
+                    <select name="armario" id="armario" class="form-control" onchange="MostrarConsultalojamiento();">
+                        <option value="">--</option>
+                        <option value="12">Si</option>
+                        <option value="">No</option>
+                    </select>
+					</div>
                 </div>
             </div>
         </div>

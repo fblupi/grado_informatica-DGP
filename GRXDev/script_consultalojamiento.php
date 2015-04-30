@@ -48,7 +48,42 @@ if($pista!=''){
 	$tam++;
 }
 
-if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $cafeteria=='' && $discoteca=='' && $pista==''){
+//Comenzamos las caracteristicas de la habitacion
+$carach=array();
+$tamh=0;
+$wifih = isset($_GET['wifih']) ? $_GET['wifih'] : '';
+if($wifih!=''){
+	array_push($carach,$wifih);
+	$tamh++;
+}
+$ncamas = isset($_GET['ncamas']) ? $_GET['ncamas'] : '';
+if($ncamas!=''){
+	array_push($carach,$ncamas);
+	$tamh++;
+}
+$bano = isset($_GET['bano']) ? $_GET['bano'] : '';
+if($bano!=''){
+	array_push($carach,$bano);
+	$tamh++;
+}
+$tele = isset($_GET['tele']) ? $_GET['tele'] : '';
+if($tele!=''){
+	array_push($carach,$tele);
+	$tamh++;
+}
+$caja = isset($_GET['caja']) ? $_GET['caja'] : '';
+if($caja!=''){
+	array_push($carach,$caja);
+	$tamh++;
+}
+$armario = isset($_GET['armario']) ? $_GET['armario'] : '';
+if($armario!=''){
+	array_push($carach,$armario);
+	$tamh++;
+}
+
+//Comprobamos que hay algun campo "relleno"
+if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $cafeteria=='' && $discoteca=='' && $pista=='' && $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario==''){
 	$result=null;
 }
 else{
@@ -80,7 +115,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
                                 </thead>
                                 <tbody id="myTable">
                                     <?php
-									if(!empty($carac)){
+									if(!empty($carac) || !empty($carach)){
 										while($row = mysql_fetch_array($result)){
 											$completo=true;
 											$result_car = $datos->Query("SELECT ID_Caracteristicas,Cantidad FROM caracteristicasalojamiento WHERE ID_Alojamiento=".$row['ID']);
@@ -94,6 +129,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 										
 									
 											if($cont==$tam && $completo==true){
+												if(empty($carach)){
 												?><tr>
 													<td><?php echo $row['ID'] ?></td>
 													<td><?php echo $row['Nombre'] ?></td>
@@ -102,7 +138,35 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 													<td></td>
 													<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 												</tr><?php
-											}
+												}
+												else{
+													$result_carh = $datos->Query("SELECT ID,Precio FROM habitacion WHERE ID_Alojamiento=".$row['ID']);
+													while($rowh = mysql_fetch_array($result_carh)){
+														$completoh=true;
+														$result_cart = $datos->Query("SELECT ID_Caracteristica,Cantidad FROM caracteristicashabitacion WHERE ID_Habitacion=".$rowh['ID']);
+														$conth=0;
+														/*?><tr><td><?php echo " ".$rowh['ID']. " = ".$tamh ?></td></tr><?php*/
+														if(!empty($result_cart)){
+														while($rowh2=mysql_fetch_array($result_cart)){
+															if(in_array($rowh2['ID_Caracteristica'], $carach))	{												
+																$conth++;
+															}
+														}
+														if($conth==$tamh && $completoh==true){
+															?><tr>
+																<td><?php echo $row['ID'] ?></td>
+																<td><?php echo $row['Nombre'] ?></td>
+																<td><?php echo $row['Direccion'] ?></td>
+																<td><?php echo $row['Descripcion'] ?></td>                               
+																<td></td>
+																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+															</tr><?php
+														}
+														}
+													
+													}//while($rowh = mysql_fetch_array($result_carh))
+												}//else
+											} 
 										}
 									}
 									else{

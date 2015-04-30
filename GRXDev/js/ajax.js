@@ -67,9 +67,15 @@ function MostrarConsultalojamiento(){
 	cafeteria = document.getElementById('cafeteria').value;
 	discoteca = document.getElementById('discoteca').value;
 	pista = document.getElementById('pista').value;
+	wifih = document.getElementById('wifih').value;
+	ncamas = document.getElementById('ncamas').value;
+	bano = document.getElementById('bano').value;
+	tele = document.getElementById('tele').value;
+	caja = document.getElementById('caja').value;
+	armario = document.getElementById('armario').value;
 	
 	ajax=objetoAjax();
-	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista);
+	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista+"&wifih="+wifih+"&ncamas="+ncamas+"&bano="+bano+"&tele="+tele+"&caja="+caja+"&armario="+armario);
 	ajax.onreadystatechange=function() {
 		if (ajax.readyState==4) {
 			divResultado.innerHTML = ajax.responseText;
@@ -85,6 +91,7 @@ function MostrarConsultahabitacion(){
 	tele = document.getElementById('tele').value;
 	caja = document.getElementById('caja').value;
 	armario = document.getElementById('armario').value;
+	
 	
 	/*spa = document.getElementById('spa').value;
 	desayuno = document.getElementById('desayuno').value;
