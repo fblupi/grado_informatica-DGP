@@ -59,14 +59,57 @@ function MostrarConsultalojamiento(){
 	nombre = document.getElementById('nombre').value;
 	ubicacion = document.getElementById('ubicacion').value;
 	tipo = document.getElementById('tipo').value;
-	piscina = document.getElementById('piscina').value;
-	wifi = document.getElementById('wifi').value;
-	spa = document.getElementById('spa').value;
-	desayuno = document.getElementById('desayuno').value;
-	nhabitacion = document.getElementById('nhabitacion').value;
-	cafeteria = document.getElementById('cafeteria').value;
-	discoteca = document.getElementById('discoteca').value;
-	pista = document.getElementById('pista').value;
+	
+	if(document.getElementById('piscina').checked){
+		piscina = document.getElementById('piscina').value=1;
+	}
+	else{
+		piscina = document.getElementById('piscina').value="";
+	}
+	if(document.getElementById('wifi').checked){
+		wifi = document.getElementById('wifi').value=2;
+	}
+	else{
+		wifi = document.getElementById('wifi').value="";
+	}
+	if(document.getElementById('spa').checked){
+		spa = document.getElementById('spa').value=4;
+	}
+	else{
+		spa = document.getElementById('spa').value="";
+	}
+	if(document.getElementById('desayuno').checked){
+		desayuno = document.getElementById('desayuno').value=5;
+	}
+	else{
+		desayuno = document.getElementById('desayuno').value="";
+	}
+	if(document.getElementById('desayuno').checked){
+		desayuno = document.getElementById('desayuno').value=5;
+	}
+	else{
+		desayuno = document.getElementById('desayuno').value="";
+	}
+	nhabitacion = document.getElementById('nhabitacion').value;cafeteria
+	
+	if(document.getElementById('cafeteria').checked){
+		cafeteria = document.getElementById('cafeteria').value=8;
+	}
+	else{
+		cafeteria = document.getElementById('cafeteria').value="";
+	}
+	if(document.getElementById('discoteca').checked){
+		discoteca = document.getElementById('discoteca').value=13;
+	}
+	else{
+		discoteca = document.getElementById('discoteca').value="";
+	}
+	if(document.getElementById('pista').checked){
+		pista = document.getElementById('pista').value=14;
+	}
+	else{
+		pista = document.getElementById('pista').value="";
+	}
 	wifih = document.getElementById('wifih').value;
 	ncamas = document.getElementById('ncamas').value;
 	bano = document.getElementById('bano').value;

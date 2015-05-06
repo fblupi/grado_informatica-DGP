@@ -1,11 +1,8 @@
 <?php
 include 'conexionBD.php';
-
-
 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : '';
 $ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
-
 
 $piscina = isset($_GET['piscina']) ? $_GET['piscina'] : '';
 $carac=array();
@@ -29,11 +26,13 @@ if($desayuno!=''){
 	array_push($carac,$desayuno);
 	$tam++;
 }
+
 $nhabitacion = isset($_GET['nhabitacion']) ? $_GET['nhabitacion'] : '';
 if($nhabitacion!=''){
-	array_push($carac,$nhabitacion);
+	array_push($carac,7);
 	$tam++;
 }
+
 $cafeteria = isset($_GET['cafeteria']) ? $_GET['cafeteria'] : '';
 if($cafeteria!=''){
 	array_push($carac,$cafeteria);
@@ -117,22 +116,31 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
                                 </thead>
                                 <tbody id="myTable">
                                     <?php
-									if(!empty($carac) || !empty($carach)){
+									$cnhabitacion='';
+									if(!empty($carac) || !empty($carach) || $nhabitacion!=''){
 										while($row = mysql_fetch_array($result)){
 											$completo=true;
 											$result_car = $datos->Query("SELECT ID_Caracteristicas,Cantidad FROM caracteristicasalojamiento WHERE ID_Alojamiento=".$row['ID']);
 											$cont=0;
 											while($row2=mysql_fetch_array($result_car)){
 												if(in_array($row2['ID_Caracteristicas'], $carac)){													
-													$cont++;
-													/*?><tr><td><?php echo $row2['ID_Caracteristicas']." ".$cont. " = ".$tam ?></td></tr><?php*/
+													if($row2['ID_Caracteristicas']==7){
+														if($row2['Cantidad']==$nhabitacion){
+															$cont++;
+														}
+													} 
+													else{
+														$cont++;
 													}
+												}
 											}
 										
 									
 											if($cont==$tam && $completo==true){
 												if(empty($carach)){
-												?><tr>
+
+													?><tr>
+													<td><?php echo $nhabitacion ?></td>
 													<td><?php echo $row['ID'] ?></td>
 													<td><?php echo $row['Nombre'] ?></td>
 													<td><?php echo $row['Direccion'] ?></td>

@@ -48,77 +48,45 @@
                     </div>
 					
 					<div class="col-md-12 col-sm-12">  
-					<h3>Caracteristicas de Alojamiento</h3>
+					<h4>Caracteristicas de Alojamiento</h4>
 					</div>
-					<div class="col-md-3 col-sm-3">  
+					<div class="col-md-1 col-sm-3">  
 					<label for="piscina">Piscina</label>
-					<button class="btn btn-primary" id="piscina" value="1" onChange="MostrarConsultalojamiento();" >Ver Mas</button>
-                    <select name="piscina" id="piscina" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="1">Si</option>
-                        <option value="">No</option>
-                    </select>
+					<input type="checkbox" id="piscina" class="formulario" name="piscina" onClick="MostrarConsultalojamiento();">
+
 					</div>
-					<div class="col-md-3 col-sm-3">  
+					<div class="col-md-1 col-sm-3">  
 					<label for="wifi">Wi-fi</label>
-                    <select name="wifi" id="wifi" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="2">Si</option>
-                        <option value="">No</option>
-                    </select>
+					<input type="checkbox" id="wifi" name="wifi" onClick="MostrarConsultalojamiento();">
 					</div>
-					<div class="col-md-3 col-sm-3">  
+					<div class="col-md-1 col-sm-3">
 					<label for="spa">Spa</label>
-                    <select name="spa" id="spa" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="4">Si</option>
-                        <option value="">No</option>
-                    </select>
+					<input type="checkbox" id="spa" name="spa" onClick="MostrarConsultalojamiento();">
 					</div>
-					<div class="col-md-3 col-sm-3">  
+					<div class="col-md-2 col-sm-3">  
 					<label for="desayuno">Desayuno</label>
-                    <select name="desayuno" id="desayuno" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="5">Si</option>
-                        <option value="">No</option>
-                    </select>
+					<input type="checkbox" id="desayuno" class="formulario" name="desayuno" onClick="MostrarConsultalojamiento();">
 					</div>
-					<div class="col-md-3 col-sm-3">  
-					<label for="nhabitacion">Numero de Habitaciones</label>
-                    <select name="nhabitacion" id="nhabitacion" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="7">Si</option>
-                        <option value="">No</option>
-                    </select>
-					</div>
-					<div class="col-md-3 col-sm-3">  
+					<div class="col-md-2 col-sm-3">  
 					<label for="cafeteria">Cafeteria</label>
-                    <select name="cafeteria" id="cafeteria" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="8">Si</option>
-                        <option value="">No</option>
-                    </select>
+					<input type="checkbox" id="cafeteria" class="formulario" name="cafeteria" onClick="MostrarConsultalojamiento();">
 					</div>
-					<div class="col-md-3 col-sm-3">  
+					<div class="col-md-2 col-sm-3">  
 					<label for="discoteca">Discoteca</label>
-                    <select name="discoteca" id="discoteca" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="13">Si</option>
-                        <option value="">No</option>
-                    </select>
+					<input type="checkbox" id="discoteca" class="formulario" name="discoteca" onClick="MostrarConsultalojamiento();">
 					</div>
-					<div class="col-md-3 col-sm-3">  
+					<div class="col-md-2 col-sm-3">  
 					<label for="pista">Pista Deportiva</label>
-                    <select name="pista" id="pista" class="form-control" onchange="MostrarConsultalojamiento();">
-                        <option value="">--</option>
-                        <option value="14">Si</option>
-                        <option value="">No</option>
-                    </select>
+					<input type="checkbox" id="pista" class="formulario" name="pista" onClick="MostrarConsultalojamiento();">
+					</div>
+					<div class="col-md-2 col-sm-2">  
+					<label for="nhabitacion">Numero de Habitaciones</label>
+					<input type="text" id="nhabitacion" name="nhabitacion" class="form-control" onkeyup="MostrarConsultalojamiento();">
 					</div>
                     <br/><br/>
 					<!-- Caracteristicas de habitacion-->
 					<div class="col-md-12 col-sm-12">  
-					<h3>Caracteristicas de habitacion</h3>
+					<h4>Caracteristicas de habitacion</h4>
 					</div>
 					<div class="col-md-3 col-sm-3">  
 					<label for="wifih">Wi-fi</label>
