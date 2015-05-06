@@ -1,5 +1,6 @@
 <?php
-include "BD.php";
+include 'conexionBD.php';
+
 $sexo = isset($_GET['sexo']) ? $_GET['sexo'] : '';
 $nick = isset($_GET['nick']) ? $_GET['nick'] : '';
 $email = isset($_GET['email']) ? $_GET['email'] : '';
@@ -7,7 +8,7 @@ $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 $apellidos = isset($_GET['apellidos']) ? $_GET['apellidos'] : '';
 $fecha = isset($_GET['fecha']) ? $_GET['fecha'] : '';
 $ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
-$datos = new BD("localhost", "root", "", "GRXDev");
+
 
 if($sexo=='' && $nick=='' && $email=='' && $nombre=='' && $apellidos=='' && $fecha=='' && $ubicacion==''){
 	$result=null;

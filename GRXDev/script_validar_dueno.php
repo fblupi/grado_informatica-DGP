@@ -1,9 +1,10 @@
 <?php
-include "BD.php";
+include 'conexionBD.php';
+
 //Comprobamos que se ha introducido usuario, correo y contraseña
 if (isset($_GET['ID_Usuario']) && isset($_COOKIE['id_usuario'])) 
 {
-    $datos = new BD("localhost", "root", "", "GRXDev");
+
     //Extraemos todos los datos
     $id = $_GET['ID_Usuario'];
     $id_usuario_sesion = $_COOKIE['id_usuario'];

@@ -1,12 +1,13 @@
 <?php
-include "BD.php";
+include 'conexionBD.php';
+
 $nif = isset($_GET['nif']) ? $_GET['nif'] : '';
 $nick = isset($_GET['nick']) ? $_GET['nick'] : '';
 $email = isset($_GET['email']) ? $_GET['email'] : '';
 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 
 $validado = isset($_GET['validado']) ? $_GET['validado'] : '';
-$datos = new BD("localhost", "root", "", "GRXDev");
+
 if($validado=='' && $nif=='' && $nick=='' && $email=='' && $nombre==''){
 	$result=null;
 }

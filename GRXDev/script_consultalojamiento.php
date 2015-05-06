@@ -1,9 +1,11 @@
 <?php
-include "BD.php";
+include 'conexionBD.php';
+
+
 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : '';
 $ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
-$datos = new BD("localhost", "root", "", "GRXDev");
+
 
 $piscina = isset($_GET['piscina']) ? $_GET['piscina'] : '';
 $carac=array();

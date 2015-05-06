@@ -47,10 +47,11 @@
         
         <?php }} ?>
 		
-        <?php 
-		include "BD.php";
+        <?php
+        include 'conexionBD.php';
+
 		$id = isset($_GET['ID_Usuario']) ? $_GET['ID_Usuario'] : null;
-		$datos = new BD("localhost", "root", "", "GRXDev");
+
 		if(empty($id)){
 			$result = $datos->Query("select Nombre_usuario,Direccion_correo,Tipo_usuario,ID_Usuario,Nombre,Apellidos,Sexo,Fecha_nacimiento,ubicacion,NIF from 	Usuarios where ID_Usuario='".$_COOKIE['id_usuario']."'");
 		}

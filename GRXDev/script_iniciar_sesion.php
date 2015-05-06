@@ -5,8 +5,8 @@
      * las variables globales de nombre_perfil y sesion_iniciada.
      */
     if (isset($_POST['correo']) && isset($_POST['pass'])) {
-        include "BD.php";
-        $datos = new BD("localhost", "root", "", "GRXDev");
+        include 'conexionBD.php';
+
         $nombreusuario = htmlspecialchars($_POST['correo']);
         $contrasena = htmlspecialchars($_POST['pass']);
         $result = $datos->Query("select Nombre_usuario,Tipo_usuario, ID_Usuario from Usuarios where Direccion_correo='$nombreusuario' AND Contrasena='$contrasena'");

@@ -1,6 +1,5 @@
 <?php
-include "BD.php";
-$datos = new BD("localhost", "root", "", "GRXDev");
+include 'conexionBD.php';
 
 $carac=array();
 $tam=0;

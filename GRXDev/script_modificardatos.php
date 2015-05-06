@@ -1,5 +1,6 @@
 <?php
-include "BD.php";
+include 'conexionBD.php';
+
 //Extraemos los datos tanto del formulario como del action del propio form
 $id = isset($_POST['id']) ? $_POST['id'] : '';
 $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : '';
@@ -14,8 +15,7 @@ $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : '';
 $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : '';
 $ubicacion = isset($_POST['ubicacion']) ? $_POST['ubicacion'] : '';
 $nif = isset($_POST['nif']) ? $_POST['nif'] : '';
-//Realizamos la conexión con la base de datos
-$datos = new BD("localhost", "root", "", "GRXDev");
+
 
 //Realizamos un select para extraer la contraseña actual para comprobarla con el campo actualcontra
 $busqueda = $datos->Query("select Contrasena from Usuarios where ID_Usuario='".$id."'");

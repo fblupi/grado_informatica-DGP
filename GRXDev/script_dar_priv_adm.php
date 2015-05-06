@@ -1,9 +1,9 @@
 <?php
-include "BD.php";
+include 'conexionBD.php';
+
 //Comprobamos que se ha introducido usuario, correo y contraseña
 if (isset($_GET['ID_Usuario'])) 
 {
-    $datos = new BD("localhost", "root", "", "GRXDev");
     //Extraemos todos los datos
     $id = $_GET['ID_Usuario'];
     $result = $datos->Query("update Usuarios set Tipo_usuario=1 where ID_Usuario='$id'");

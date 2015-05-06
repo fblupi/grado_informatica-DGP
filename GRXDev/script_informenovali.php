@@ -1,7 +1,8 @@
 <?php
-include "BD.php";
+include 'conexionBD.php';
+
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : '';
-$datos = new BD("localhost", "root", "", "GRXDev");
+
 if($tipo==''){
 	$result=null;	
 }

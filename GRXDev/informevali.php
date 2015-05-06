@@ -1,6 +1,5 @@
 <?php
-include "BD.php";
-$datos = new BD("localhost", "root", "", "GRXDev");
+include 'conexionBD.php';
 
 $result = $datos->Query("SELECT ID,Nombre,Direccion from alojamiento where ID_Validador!=0 and Fecha_validacion!=0");
 
