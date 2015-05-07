@@ -53,6 +53,10 @@ class BD {
         return $res = mysql_query($cadena, $this->GetMyConnection());
     }
 
+    public function LastQueryID(){
+        return $res = mysql_insert_id();
+    }
+
     /*
      * Obtener todas las filas que devuelve una consulta
       $result = $datos->Query("SELECT * FROM Usuarios");

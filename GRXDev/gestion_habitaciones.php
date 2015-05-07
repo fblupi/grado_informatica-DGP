@@ -11,14 +11,7 @@
     <-- //Se obtendrá por parametro GET el id del alojamiento -->
     <div class="panel-body">
         <form class="form col-md-12" action="script_nueva_habitacion.php?ID_Alojamiento=1" method="post">
-            <div class="form-group col-md-3 col-sm-3">
-                <label for="precio">Precio</label>
-                <input type="text" id="precio" name="add_precio" class="form-control">
-            </div>
-            <div class="form-group col-md-5 col-sm-5">
-                <label for="nombre">Dirección</label>
-                <input type="text" id="nombre" name="add_direccion" class="form-control" >
-            </div>
+
             <?php
                 include 'conexionBD.php';
                 $result=$datos->Query("SELECT * FROM caracteristicas WHERE tipo='1'");
@@ -27,11 +20,11 @@
                     if($fila['Tipo_check']=='1'){
                         echo '<div class="col-md-2 col-sm-3">';
                         echo '<label for="'.$fila['Descripcion'].'">'.$fila['Descripcion'].'</label>';
-                        echo '<input type="checkbox"  name="'.$fila['Descripcion'].'" value="'.$fila['Descripcion'].'" >';
+                        echo '<input type="checkbox"  name="'.$fila['ID_Caracteristicas'].'" value="'.$fila['ID_Caracteristicas'].'" >';
                     }else{
                         echo '<div class="form-group col-md-3 col-sm-3">';
                         echo '<label for="'.$fila['Descripcion'].'">'.$fila['Descripcion'].'</label>';
-                        echo '<input type="text" id="'.$fila['Descripcion'].'" name="'.$fila['Descripcion'].'" class="form-control" >';
+                        echo '<input type="text" id="'.$fila['ID_Caracteristicas'].'" name="'.$fila['ID_Caracteristicas'].'" class="form-control" >';
                     }
 					echo '</div>';
                 }
