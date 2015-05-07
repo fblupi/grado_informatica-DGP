@@ -136,9 +136,10 @@ function MostrarConsultalojamiento(){
 	else{
 		armario = document.getElementById('armario').value="";
 	}
+	estrella = document.getElementById('estrella').value;
 	
 	ajax=objetoAjax();
-	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista+"&wifih="+wifih+"&ncamas="+ncamas+"&bano="+bano+"&tele="+tele+"&caja="+caja+"&armario="+armario);
+	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista+"&wifih="+wifih+"&ncamas="+ncamas+"&bano="+bano+"&tele="+tele+"&caja="+caja+"&armario="+armario+"&estrella="+estrella);
 	ajax.onreadystatechange=function() {
 		if (ajax.readyState==4) {
 			divResultado.innerHTML = ajax.responseText;

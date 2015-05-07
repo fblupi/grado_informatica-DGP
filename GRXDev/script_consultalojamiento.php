@@ -32,7 +32,11 @@ if($nhabitacion!=''){
 	array_push($carac,7);
 	$tam++;
 }
-
+$estrella = isset($_GET['estrella']) ? $_GET['estrella'] : '';
+if($estrella!=''){
+	array_push($carac,15);
+	$tam++;
+}
 $cafeteria = isset($_GET['cafeteria']) ? $_GET['cafeteria'] : '';
 if($cafeteria!=''){
 	array_push($carac,$cafeteria);
@@ -84,7 +88,7 @@ if($armario!=''){
 }
 
 //Comprobamos que hay algun campo "relleno"
-if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $cafeteria=='' && $discoteca=='' && $pista=='' && $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario==''){
+if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $estrella=='' && $cafeteria=='' && $discoteca=='' && $pista=='' && $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario==''){
 	$result=null;
 }
 else{
@@ -124,8 +128,11 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 											$cont=0;
 											while($row2=mysql_fetch_array($result_car)){
 												if(in_array($row2['ID_Caracteristicas'], $carac)){													
-													if($row2['ID_Caracteristicas']==7){
-														if($row2['Cantidad']==$nhabitacion){
+													if($row2['ID_Caracteristicas']==7 || $row2['ID_Caracteristicas']==15){
+														if($row2['ID_Caracteristicas']==7 && $row2['Cantidad']==$nhabitacion){
+															$cont++;
+														}
+														elseif($row2['ID_Caracteristicas']==15 && $row2['Cantidad']==$estrella){
 															$cont++;
 														}
 													} 
