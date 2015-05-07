@@ -69,6 +69,9 @@ if($_COOKIE['sesion_iniciada'] == false)
 					<?php if ($_COOKIE['tipo_usuario'] == 2) { ?>
                     <li><a href="index.php?cat=novali"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Informe: No validados</a></li><li><a href="index.php?cat=vali"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Informe: Validados</a></li>
                     <?php } ?>
+					 <?php if ($_COOKIE['tipo_usuario'] == 1 || $_COOKIE['tipo_usuario'] == 5) { ?>
+                        <li><a href="index.php?cat=gestion_alojamientos"><i class="glyphicon glyphicon-globe" style="color:#888fff;"></i> Gestión de alojamientos</a></li>
+                    <?php } ?>
                     <li><a href="script_cerrar_sesion.php"><i class="glyphicon glyphicon-eject" style="color:#11dd11;"></i> Cerrar sesión</a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-plus"></i> Más...</a></li>
                 </ul>
