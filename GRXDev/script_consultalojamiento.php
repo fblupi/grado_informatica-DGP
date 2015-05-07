@@ -59,12 +59,12 @@ if($wifih!=''){
 }
 $ncamas = isset($_GET['ncamas']) ? $_GET['ncamas'] : '';
 if($ncamas!=''){
-	array_push($carach,$ncamas);
+	array_push($carach,6);
 	$tamh++;
 }
 $bano = isset($_GET['bano']) ? $_GET['bano'] : '';
 if($bano!=''){
-	array_push($carach,$bano);
+	array_push($carach,9);
 	$tamh++;
 }
 $tele = isset($_GET['tele']) ? $_GET['tele'] : '';
@@ -158,8 +158,18 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 														/*?><tr><td><?php echo " ".$rowh['ID']. " = ".$tamh ?></td></tr><?php*/
 														if(!empty($result_cart)){
 														while($rowh2=mysql_fetch_array($result_cart)){
-															if(in_array($rowh2['ID_Caracteristica'], $carach))	{												
-																$conth++;
+															if(in_array($rowh2['ID_Caracteristica'], $carach))	{
+																if($rowh2['ID_Caracteristica']==6 || $rowh2['ID_Caracteristica']==9){
+																	if($rowh2['ID_Caracteristica']==6 && $rowh2['Cantidad']==$ncamas){
+																		$conth++;
+																	}
+																	elseif($rowh2['ID_Caracteristica']==9 && $rowh2['Cantidad']==$bano){
+																		$conth++;
+																	}
+																} 
+																else{
+																	$conth++;
+																}															
 															}
 														}
 														if($conth==$tamh && $completoh==true){

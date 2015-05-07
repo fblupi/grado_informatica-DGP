@@ -90,7 +90,7 @@ function MostrarConsultalojamiento(){
 	else{
 		desayuno = document.getElementById('desayuno').value="";
 	}
-	nhabitacion = document.getElementById('nhabitacion').value;cafeteria
+	nhabitacion = document.getElementById('nhabitacion').value;
 	
 	if(document.getElementById('cafeteria').checked){
 		cafeteria = document.getElementById('cafeteria').value=8;
@@ -110,12 +110,32 @@ function MostrarConsultalojamiento(){
 	else{
 		pista = document.getElementById('pista').value="";
 	}
-	wifih = document.getElementById('wifih').value;
+	if(document.getElementById('wifih').checked){
+		wifih = document.getElementById('wifih').value=3;
+	}
+	else{
+		wifih = document.getElementById('wifih').value="";
+	}
+	if(document.getElementById('tele').checked){
+		tele = document.getElementById('tele').value=10;
+	}
+	else{
+		tele = document.getElementById('tele').value="";
+	}
 	ncamas = document.getElementById('ncamas').value;
 	bano = document.getElementById('bano').value;
-	tele = document.getElementById('tele').value;
-	caja = document.getElementById('caja').value;
-	armario = document.getElementById('armario').value;
+	if(document.getElementById('caja').checked){
+		caja = document.getElementById('caja').value=11;
+	}
+	else{
+		caja = document.getElementById('caja').value="";
+	}
+	if(document.getElementById('armario').checked){
+		armario = document.getElementById('armario').value=12;
+	}
+	else{
+		armario = document.getElementById('armario').value="";
+	}
 	
 	ajax=objetoAjax();
 	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista+"&wifih="+wifih+"&ncamas="+ncamas+"&bano="+bano+"&tele="+tele+"&caja="+caja+"&armario="+armario);
