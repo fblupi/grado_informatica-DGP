@@ -193,3 +193,19 @@ function MostrarConsultaInforme(){
 	}
 	ajax.send(null);
 }
+
+function MostrarConsultaGestionAlojamiento(){
+	divResultado = document.getElementById('resultado_busqueda');
+	nombre = document.getElementById('nombre').value;
+	ubicacion = document.getElementById('ubicacion').value;
+	tipo = document.getElementById('tipo').value;
+	
+	ajax=objetoAjax();
+	ajax.open("GET", "script_consultagestionalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo);
+	ajax.onreadystatechange=function() {
+		if (ajax.readyState==4) {
+			divResultado.innerHTML = ajax.responseText;
+		}
+	}
+	ajax.send(null);
+}
