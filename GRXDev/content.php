@@ -33,14 +33,17 @@ if(!empty($categoria)){
 					}
 					elseif($categoria=='vali'){
 						include_once 'informevali.php';
-					}elseif($categoria=='gestion_alojamientos'){
+					}
+					elseif($categoria=='alojamiento'){
+						include_once 'alojamiento.php';
+					}
+					elseif($categoria=='habitacion'){
+						include_once 'habitacion.php';
+					}
+					elseif($categoria=='gestion_alojamientos'){
                         include_once 'gestion_alojamientos.php';
                     }elseif($categoria=='gestion_habitaciones'){
                         include_once 'gestion_habitaciones.php';
-                }
-                elseif($categoria=="modificar_alojamiento")
-                {
-                    include_once 'modificaralojamiento.php';
                 }
 }
 ?>

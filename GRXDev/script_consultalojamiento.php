@@ -153,7 +153,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 													<td><?php echo $row['Direccion'] ?></td>
 													<td><?php echo $row['Descripcion'] ?></td>                               
 													<td></td>
-													<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+													<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 												</tr><?php
 												}
 												else{
@@ -186,7 +186,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 																<td><?php echo $row['Direccion'] ?></td>
 																<td><?php echo $row['Descripcion'] ?></td>                               
 																<td></td>
-																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 															</tr><?php
 														}
 														}
@@ -206,7 +206,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
                                             <td><?php echo $row['Descripcion'] ?></td>
                                                                                         
                                             <td></td>
-                                            <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=perfil&ID_Usuario=<?php echo $row['ID'] ?>'" >Ver Mas</button></td>
+                                           <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
                                         </tr>
                                     <?php } } ?>
                                 </tbody>
