@@ -38,5 +38,9 @@ if(!empty($categoria)){
                     }elseif($categoria=='gestion_habitaciones'){
                         include_once 'gestion_habitaciones.php';
                 }
+                elseif($categoria=="modificar_alojamiento")
+                {
+                    include_once 'modificaralojamiento.php';
+                }
 }
 ?>
