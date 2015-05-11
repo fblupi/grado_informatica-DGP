@@ -8,155 +8,93 @@
 <div center-block">
 <div class="panel panel-warning">
     <div class="panel-heading"><h4>Añadir habitaciones</h4></div>
-    <-- //Se obtendrá por parametro GET el id del alojamiento -->
+    <?php $alojamiento=$_GET['ID_Alojamiento']?>
     <div class="panel-body">
-        <form class="form col-md-12" action="script_nueva_habitacion.php?ID_Alojamiento=1" method="post">
-
+        <form class="form col-md-12" action="script_nueva_habitacion.php?ID_Alojamiento=<?php echo $alojamiento;?>" method="post">
+            <div class="form-group col-md-3 col-sm-1">
+                <label for="precio">Habitaciones a añadir: </label>
+                <input type="number" id="copias" name="copias" class="form-control">
+            </div>
+            <div style="clear: left">
             <?php
                 include 'conexionBD.php';
-                $result=$datos->Query("SELECT * FROM caracteristicas WHERE tipo='1'");
+                $result=$datos->Query("SELECT * FROM caracteristicas WHERE tipo='1' ORDER BY Tipo_check");
                 while($fila=mysql_fetch_array($result)){
 
                     if($fila['Tipo_check']=='1'){
-                        echo '<div class="col-md-2 col-sm-3">';
-                        echo '<label for="'.$fila['Descripcion'].'">'.$fila['Descripcion'].'</label>';
+                        echo '<div class="col-md-2 col-sm-2">';
+                        echo '<label for="'.$fila['Descripcion'].'">'.utf8_encode($fila['Descripcion']).' </label>';
                         echo '<input type="checkbox"  name="'.$fila['ID_Caracteristicas'].'" value="'.$fila['ID_Caracteristicas'].'" >';
                     }else{
-                        echo '<div class="form-group col-md-3 col-sm-3">';
-                        echo '<label for="'.$fila['Descripcion'].'">'.$fila['Descripcion'].'</label>';
+                        echo '<div class="form-group col-md-2 col-sm-2>';
+                        echo '<label for="'.$fila['Descripcion'].'">'.utf8_encode($fila['Descripcion']).' </label>';
                         echo '<input type="text" id="'.$fila['ID_Caracteristicas'].'" name="'.$fila['ID_Caracteristicas'].'" class="form-control" >';
                     }
 					echo '</div>';
                 }
             ?>
-            <div class="form-group col-md-3 col-sm-3">
-                <label for="precio">Habitaciones a añadir: </label>
-                <input type="text" id="copias" name="copias" class="form-control">
             </div>
-            <div class="form-group col-md-3 col-sm-3">
-                <button class="btn btn-primary" type="submit" >Añadir habitacion(es)</button>
+            <div class="form-group col-md-9 col-sm-9" style="clear:left">
+                <button type="submit" class="btn btn-success" >Nueva habitación</button>
             </div>
         </form>
     </div>
 </div>
-</div> <-- Buscador -->
-<div class="col-md-12 col-sm-12">
-    <div class="panel panel-warning">
-        <div class="panel-heading"><h4>Buscar Alojamientos</h4></div>
-        <div class="panel-body">
-            <div class="col-md-3 col-sm-3">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" onkeyup="MostrarConsultalojamiento();">
+</div> <!-- Buscador -->
+    <div class="col-md-12 col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading"><h4>Habitaciones de este alojamiento</h4></div>
+            <div class="panel-body">
+                <?php $result=$datos->Query("SELECT * FROM habitacion WHERE ID_Alojamiento='".$alojamiento."'")?>
+                <?php if($result){?>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Habilitado</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="myTable">
+                            <?php
+                            while ($row = mysql_fetch_array($result)) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $row['ID'] ?></td>
+                                    <td><?php if($row['Habilitado']=='0'){ echo 'NO'; }else { echo 'SI';} ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><button class="btn btn-danger" onClick="location.href = 'script_baja_alta_habitacion.php?ID_Habitacion=<?php echo $row['ID'] ?>'" >Dar de baja</button></td>
+                                    <td><button class="btn btn-warning" onClick="location.href = 'index.php?cat=modificar_habitacion&ID_Habitacion=<?php echo $row['ID'] ?>'" >Modificar</button></td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                    </div>
+                </div>
+                <?php } ?>
+                </div>
             </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="ubicacion">Ubicacion</label>
-                <input type="text" id="ubicacion" name="ubicacion" class="form-control" onkeyup="MostrarConsultalojamiento();">
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="precio">Precio</label>
-                <input type="text" id="precio" name="precio" class="form-control" onkeyup="MostrarConsultalojamiento();">
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="estrella">Estrellas</label>
-                <select name="estrella" id="estrella" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="1">1 estrella</option>
-                    <option value="2">2 estrellas</option>
-                    <option value="3">3 estrellas</option>
-                    <option value="4">4 estrellas</option>
-                    <option value="5">5 estrellas</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="tipo">Tipo de alojamiento</label>
-                <select name="tipo" id="tipo" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="1">Hotel</option>
-                    <option value="2">Casa Rural</option>
-                    <option value="3">Piso-parcial</option>
-                    <option value="4">Piso completo</option>
-                </select>
-            </div>
-
-            <div class="col-md-3 col-sm-3">
-
-            </div>
-
-            <div class="col-md-12 col-sm-12">
-                <h3>Caracteristicas de Alojamiento</h3>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="piscina">Piscina</label>
-                <button class="btn btn-primary" id="piscina" value="1" onChange="MostrarConsultalojamiento();" >Ver Mas</button>
-                <select name="piscina" id="piscina" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="1">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="wifi">Wi-fi</label>
-                <select name="wifi" id="wifi" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="2">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="spa">Spa</label>
-                <select name="spa" id="spa" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="4">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="desayuno">Desayuno</label>
-                <select name="desayuno" id="desayuno" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="5">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="nhabitacion">Numero de Habitaciones</label>
-                <select name="nhabitacion" id="nhabitacion" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="7">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="cafeteria">Cafeteria</label>
-                <select name="cafeteria" id="cafeteria" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="8">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="discoteca">Discoteca</label>
-                <select name="discoteca" id="discoteca" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="13">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <label for="pista">Pista Deportiva</label>
-                <select name="pista" id="pista" class="form-control" onchange="MostrarConsultalojamiento();">
-                    <option value="">--</option>
-                    <option value="14">Si</option>
-                    <option value="">No</option>
-                </select>
-            </div>
-            <br/><br/>
-
         </div>
     </div>
-</div>
-<div id="resultado_busqueda">
-</div>
-<div class="clearfix"></div>
+    <div id="resultado_busqueda">
+    </div>
+    <div class="clearfix"></div>
 </div>
 </div><!--/main-->
