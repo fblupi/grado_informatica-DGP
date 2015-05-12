@@ -3,10 +3,8 @@
 <div class="container" id="main">
     <div class="row">
         <?php
-        /**********
-         * CAMBIAR POR COMPROBACION DE USUARIO !!
-         *********/
-        if(false)//Si existe un error de inicio de sesión se muestra el div de error
+        
+        if(!$_COOKIE['sesion_iniciada'])//Si existe un error de inicio de sesión se muestra el div de error
         {   ?>
         <div class="col-md-12 col-sm-12">
             <div class="alert alert-danger alert-dismissable">Debe iniciar sesión.</div>

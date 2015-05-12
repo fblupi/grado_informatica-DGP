@@ -90,7 +90,7 @@
                     if($fila=mysql_fetch_array($result)){
                         $tipo=$fila['Tipo_alojamiento'];
                         if($tipo==2){
-                            echo '<button class="btn btn-primary" style="margin-right:2%;" onClick="location.href = \'index.php?cat=reservar_alojamiento&ID_Alojamiento='.$id.'" >Reservar</button>';
+                            echo '<button class="btn btn-primary" style="margin-right:2%;" onClick="location.href = \'index.php?cat=reserva_alojamiento&ID_Alojamiento='.$id.'\'" >Reservar</button>';
                         }
                     }
 
