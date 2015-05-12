@@ -92,4 +92,55 @@
 	</div>
         <div class="clearfix"></div>
 	</div>
+    
+        <div class="col-md-12 col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading"><h4>Habitaciones de este alojamiento</h4></div>
+            <div class="panel-body">
+                <?php $result=$datos->Query("SELECT * FROM habitacion WHERE ID_Alojamiento='".$id."'")?>
+                <?php if($result){?>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Habilitado</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="myTable">
+                            <?php
+                            while ($row = mysql_fetch_array($result)) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $row['ID'] ?></td>
+                                    <td><?php if($row['Habilitado']=='0'){ echo 'NO'; }else { echo 'SI';} ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><button class="btn btn-danger" onClick="location.href = 'index.php?cat=reserva_habitacion&ID_Habitacion=<?php echo $row['ID'] ?>'" >Realizar reserva</button></td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                    </div>
+                </div>
+                <?php } ?>
+                </div>
+            </div>
+        </div>
 </div><!--/main-->
