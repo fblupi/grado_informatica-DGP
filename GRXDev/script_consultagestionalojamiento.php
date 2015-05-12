@@ -46,7 +46,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
                                             <td><?php echo $row['Descripcion'] ?></td>
 
                                             <td></td>
-                                            <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=buscar_alojamientos&ID_Alojamiento=<?php echo $row['ID'] ?>'" >Gestionar habitaciones</button></td>
+                                            <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=gestion_habitaciones&ID_Alojamiento=<?php echo $row['ID'] ?>'" >Gestionar habitaciones</button></td>
                                             <td><button class="btn btn-danger" onClick="location.href = 'script_bajaalojamiento.php?ID_Alojamiento=<?php echo $row['ID'] ?>'" >Dar de baja</button></td>
                                             <td><button class="btn btn-warning" onClick="location.href = 'script_modificaralojamiento.php?ID_Alojamiento=<?php echo $row['ID'] ?>'" >Modificar</button></td>
                                         </tr>
