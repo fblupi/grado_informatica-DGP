@@ -2,31 +2,34 @@
         <!--main-->
 <div class="container" id="main">
     <div class="row">
-        <?php 
-        if(isset($_COOKIE['id_usuario']))//Si existe un error de inicio de sesión se muestra el div de error
+        <?php
+        /**********
+         * CAMBIAR POR COMPROBACION DE USUARIO !!
+         *********/
+        if(false)//Si existe un error de inicio de sesión se muestra el div de error
         {   ?>
         <div class="col-md-12 col-sm-12">
             <div class="alert alert-danger alert-dismissable">Debe iniciar sesión.</div>
         </div> 
-        <?php } else if(isset($_GET['ID_Habitacion']))
+        <?php } elseif(!isset($_GET['ID_Habitacion']))
         {?>
             <div class="col-md-12 col-sm-12">
             <div class="alert alert-danger alert-dismissable">No se encuentra la habitación a reservar.</div>
         </div> 
-        <?php } elseif(isset($_GET['error_fechas'])==false)
-        {
-            if($_GET['error_fechas']==true)?>
+        <?php } elseif(isset($_GET['error_fechas'])){
+            // if($_GET['error_fechas']==true){?>
             <div class="col-md-12 col-sm-12">
             <div class="alert alert-danger alert-dismissable">Las fecha de inicio es mayor que la final.</div>
         </div> 
-        <?php} elseif(isset($_GET['error_fechas_ocupadas'])==false)
+        <?php //}
+        } elseif(isset($_GET['error_fechas_ocupadas']))
         {
-             if($_GET['error_fechas_ocupadas']==true)?>
+             //if($_GET['error_fechas_ocupadas']==true){?>
             <div class="col-md-12 col-sm-12">
             <div class="alert alert-danger alert-dismissable">Las fechas están ocupadas, elige otras.</div>
         </div> 
-        <?php}
-        else{?>
+        <?php // }
+        } else{?>
         <div class="col-md-12 col-sm-12">
     	<div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4></h4></div>
