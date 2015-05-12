@@ -86,13 +86,22 @@
 			  
               <div class="clearfix"></div>
 			  <hr>
-              <button class="btn btn-primary" style="margin-right:2%;"onClick="location.href ='index.php?cat=perfil&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >No Guardar</button><button style="margin-right:2%;" class="btn btn-primary" onClick="location.href ='index.php?cat=perfil&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >No Guardar</button><button class="btn btn-primary" style="margin-right:2%;" onClick="location.href ='index.php?cat=perfil&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >No Guardar</button>
+              <?php $result=$datos->Query("SELECT * FROM alojamiento WHERE ID='$id'");
+                    if($fila=mysql_fetch_array($result)){
+                        $tipo=$fila['Tipo_alojamiento'];
+                        if($tipo==2){
+                            echo '<button class="btn btn-primary" style="margin-right:2%;" onClick="location.href = \'index.php?cat=reservar_alojamiento&ID_Alojamiento='.$id.'" >Reservar</button>';
+                        }
+                    }
+
+              ?>
+
             </div>
          </div>
 	</div>
         <div class="clearfix"></div>
 	</div>
-    
+
         <div class="col-md-12 col-sm-12">
         <div class="panel panel-warning">
             <div class="panel-heading"><h4>Habitaciones de este alojamiento</h4></div>
