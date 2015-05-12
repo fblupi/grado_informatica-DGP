@@ -21,6 +21,25 @@
                     <label for="precio">Precio</label>
                     <input type="text" id="precio" name="precio" class="form-control" onkeyup="MostrarConsultalojamiento();">
                     </div>
+					<div class="col-md-3 col-sm-3">  
+					<label for="estrella">Estrellas</label>
+                    <select name="estrella" id="estrella" class="form-control" onchange="MostrarConsultalojamiento();">
+						<option value="">--</option>
+                        <option value="1">1 estrella</option>
+                        <option value="2">2 estrellas</option>
+                        <option value="3">3 estrellas</option>
+						<option value="4">4 estrellas</option>
+						<option value="5">5 estrellas</option>
+                    </select>
+					</div>
+					<div class="col-md-3 col-sm-3">  
+                    <label for="fechae">Fecha entrada</label>
+                    <input type="date" id="fechae" name="fechae" class="form-control" onchange="MostrarConsultalojamiento();">
+                    </div>
+					<div class="col-md-3 col-sm-3">  
+                    <label for="fechas">Fecha salida</label>
+                    <input type="date" id="fechas" name="fechas" class="form-control" onchange="MostrarConsultalojamiento();">
+                    </div>
                     <div class="col-md-3 col-sm-3">  
 					<label for="estrella">Estrellas</label>
                     <select name="estrella" id="estrella" class="form-control" onchange="MostrarConsultalojamiento();">

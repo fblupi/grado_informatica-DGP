@@ -139,9 +139,12 @@ function MostrarConsultalojamiento(){
 	estrella = document.getElementById('estrella').value;
 	precio = document.getElementById('precio').value;
 	precioh = document.getElementById('precioh').value;
+	fechae = document.getElementById('fechae').value;
+	fechas = document.getElementById('fechas').value;
+	
 	
 	ajax=objetoAjax();
-	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista+"&wifih="+wifih+"&ncamas="+ncamas+"&bano="+bano+"&tele="+tele+"&caja="+caja+"&armario="+armario+"&estrella="+estrella+"&precioh="+precioh+"&precio="+precio);
+	ajax.open("GET", "script_consultalojamiento.php?nombre="+nombre+"&ubicacion="+ubicacion+"&tipo="+tipo+"&piscina="+piscina+"&wifi="+wifi+"&spa="+spa+"&desayuno="+desayuno+"&nhabitacion="+nhabitacion+"&cafeteria="+cafeteria+"&discoteca="+discoteca+"&pista="+pista+"&wifih="+wifih+"&ncamas="+ncamas+"&bano="+bano+"&tele="+tele+"&caja="+caja+"&armario="+armario+"&estrella="+estrella+"&precioh="+precioh+"&precio="+precio+"&fechae="+fechae+"&fechas="+fechas);
 	ajax.onreadystatechange=function() {
 		if (ajax.readyState==4) {
 			divResultado.innerHTML = ajax.responseText;

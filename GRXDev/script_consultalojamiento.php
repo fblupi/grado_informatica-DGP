@@ -96,9 +96,16 @@ if($armario!=''){
 	array_push($carach,$armario);
 	$tamh++;
 }
+$fechae = isset($_GET['fechae']) ? $_GET['fechae'] : '';
+$fechas = isset($_GET['fechas']) ? $_GET['fechas'] : '';
+$fechae = strtotime($fechae);
+$fechas = strtotime($fechas);
+$fechae = date('Y-m-d',$fechae);
+$fechas = date('Y-m-d',$fechas);
 
 //Comprobamos que hay algun campo "relleno"
-if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $estrella=='' && $cafeteria=='' && $discoteca=='' && $pista=='' && $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario=='' && $precio=='' && $precioh==''){
+if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $estrella=='' && $cafeteria=='' && $discoteca=='' && $pista=='' 
+&& $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario=='' && $precio=='' && $precioh=='' && $fechae=='' && $fechas==''){
 	$result=null;
 }
 else{
@@ -116,7 +123,8 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th><?php echo $fechae?></th>
+										<th><?php echo $fechas?></th>
                                         <th>Nombre</th>
                                         <th>Direccion</th>
                                         <th></th>
