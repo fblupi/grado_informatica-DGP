@@ -255,4 +255,3 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
     </div>
 </div>
 </div>
-

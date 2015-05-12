@@ -84,7 +84,7 @@
 			  
               <div class="clearfix"></div>
 			  <hr>
-              <button class="btn btn-primary" style="margin-right:2%;"onClick="location.href ='index.php?cat=perfil&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >No Guardar</button><button style="margin-right:2%;" class="btn btn-primary" onClick="location.href ='index.php?cat=perfil&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >No Guardar</button><button class="btn btn-primary" style="margin-right:2%;" onClick="location.href ='index.php?cat=perfil&ID_Usuario=<?php echo $fila['ID_Usuario'] ?>'" >No Guardar</button>
+              <button class="btn btn-primary" style="margin-right:2%;"onClick="location.href ='index.php?cat=reserva_habitacion&ID_Habitacion=<?php echo $id; ?>'" >Reservar</button>
             </div>
          </div>
 	</div>
