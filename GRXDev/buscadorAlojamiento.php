@@ -112,6 +112,10 @@
 					<label for="bano">Baño</label>
 					<input type="text" id="bano" name="bano" class="form-control" onkeyup="MostrarConsultalojamiento();">
 					</div>
+					<div class="col-md-3 col-sm-3">  
+                    <label for="precioh">Precio</label>
+                    <input type="text" id="precioh" name="precioh" class="form-control" onkeyup="MostrarConsultalojamiento();">
+                    </div>
                 </div>
             </div>
         </div>

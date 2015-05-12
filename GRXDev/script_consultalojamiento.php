@@ -37,6 +37,11 @@ if($estrella!=''){
 	array_push($carac,15);
 	$tam++;
 }
+$precio = isset($_GET['precio']) ? $_GET['precio'] : '';
+if($precio!=''){
+	array_push($carac,16);
+	$tam++;
+}
 $cafeteria = isset($_GET['cafeteria']) ? $_GET['cafeteria'] : '';
 if($cafeteria!=''){
 	array_push($carac,$cafeteria);
@@ -71,6 +76,11 @@ if($bano!=''){
 	array_push($carach,9);
 	$tamh++;
 }
+$precioh = isset($_GET['precioh']) ? $_GET['precioh'] : '';
+if($precioh!=''){
+	array_push($carach,17);
+	$tamh++;
+}
 $tele = isset($_GET['tele']) ? $_GET['tele'] : '';
 if($tele!=''){
 	array_push($carach,$tele);
@@ -88,11 +98,11 @@ if($armario!=''){
 }
 
 //Comprobamos que hay algun campo "relleno"
-if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $estrella=='' && $cafeteria=='' && $discoteca=='' && $pista=='' && $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario==''){
+if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $estrella=='' && $cafeteria=='' && $discoteca=='' && $pista=='' && $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario=='' && $precio=='' && $precioh==''){
 	$result=null;
 }
 else{
-$result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamiento WHERE Nombre LIKE '%" . $nombre . "%' and Tipo_alojamiento LIKE '%" . $tipo . "%' and Direccion LIKE '%" . $ubicacion . "%'");
+$result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamiento FROM alojamiento WHERE Nombre LIKE '%" . $nombre . "%' and Tipo_alojamiento LIKE '%" . $tipo . "%' and Direccion LIKE '%" . $ubicacion . "%'"." and Fecha_validacion!=0");
 
 }
 ?>
@@ -128,11 +138,14 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 											$cont=0;
 											while($row2=mysql_fetch_array($result_car)){
 												if(in_array($row2['ID_Caracteristicas'], $carac)){													
-													if($row2['ID_Caracteristicas']==7 || $row2['ID_Caracteristicas']==15){
+													if($row2['ID_Caracteristicas']==7 || $row2['ID_Caracteristicas']==15 || $row2['ID_Caracteristicas']==16){
 														if($row2['ID_Caracteristicas']==7 && $row2['Cantidad']==$nhabitacion){
 															$cont++;
 														}
 														elseif($row2['ID_Caracteristicas']==15 && $row2['Cantidad']==$estrella){
+															$cont++;
+														}
+														elseif($row2['ID_Caracteristicas']==16 && $row2['Cantidad']<=$precio){
 															$cont++;
 														}
 													} 
@@ -157,7 +170,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 												</tr><?php
 												}
 												else{
-													$result_carh = $datos->Query("SELECT ID,Precio FROM habitacion WHERE ID_Alojamiento=".$row['ID']);
+													$result_carh = $datos->Query("SELECT ID FROM habitacion WHERE ID_Alojamiento=".$row['ID']." and Habilitado!=0");
 													while($rowh = mysql_fetch_array($result_carh)){
 														$completoh=true;
 														$result_cart = $datos->Query("SELECT ID_Caracteristica,Cantidad FROM caracteristicashabitacion WHERE ID_Habitacion=".$rowh['ID']);
@@ -166,11 +179,14 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 														if(!empty($result_cart)){
 														while($rowh2=mysql_fetch_array($result_cart)){
 															if(in_array($rowh2['ID_Caracteristica'], $carach))	{
-																if($rowh2['ID_Caracteristica']==6 || $rowh2['ID_Caracteristica']==9){
+																if($rowh2['ID_Caracteristica']==6 || $rowh2['ID_Caracteristica']==9 || $rowh2['ID_Caracteristica']==17){
 																	if($rowh2['ID_Caracteristica']==6 && $rowh2['Cantidad']==$ncamas){
 																		$conth++;
 																	}
 																	elseif($rowh2['ID_Caracteristica']==9 && $rowh2['Cantidad']==$bano){
+																		$conth++;
+																	}
+																	elseif($rowh2['ID_Caracteristica']==17 && $rowh2['Cantidad']<=$precioh){
 																		$conth++;
 																	}
 																} 
@@ -187,6 +203,10 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamient
 																<td><?php echo $row['Descripcion'] ?></td>                               
 																<td></td>
 																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+																<?php
+																if($row['Tipo_alojamiento']==1){?>
+																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=habitacion&ID_Habitacion=<?php echo $rowh['ID']?>'" >Ver Habitacion</button></td>
+																<?php }?>
 															</tr><?php
 														}
 														}
