@@ -62,6 +62,9 @@ if($_COOKIE['sesion_iniciada'] == false)
                     <li><a href="index.php?cat=perfil"><i class="glyphicon glyphicon-user" style="color:#1111dd;"></i> <?php echo $_COOKIE['nombre_perfil']; ?></a></li>
                     <li class="nav-divider"></li>
                     <li><a href="#"><i class="glyphicon glyphicon-cog" style="color:#dd1111;"></i> Configuración</a></li>
+                    <?php if ($_COOKIE['tipo_usuario'] == 0) { ?>
+                        <li><a href="index.php?cat=mis_reservas"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Mis reservas</a></li>
+                    <?php } ?>
                     <?php if ($_COOKIE['tipo_usuario'] == 1) { ?>
                     <li><a href="index.php?cat=buscador"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Gestión de usuarios</a></li>
 					<li><a href="index.php?cat=buscadord"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Gestión de Dueños</a></li>

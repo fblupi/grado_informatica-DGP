@@ -51,6 +51,9 @@ switch($categoria){
     case 'reserva_habitacion':
         include_once 'reservar_habitacion.php';
         break;
+    case 'mis_reservas':
+        include_once 'mis_reservas.php';
+        break;
     default:
         include_once 'inicio.php';
 

@@ -61,7 +61,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
+
                             </tr>
                             </thead>
                             <tbody id="myTable">
@@ -70,14 +70,19 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $row['ID'] ?></td>
-                                    <td><?php if($row['Habilitado']=='0'){ echo 'NO'; }else { echo 'SI';} ?></td>
+                                    <td><?php if($row['Habilitado']=='0'){ $habilitado=false; echo 'NO'; }else { $habilitado=true; echo 'SI';} ?></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><button class="btn btn-danger" onClick="location.href = 'script_baja_alta_habitacion.php?ID_Habitacion=<?php echo $row['ID'] ?>'" >Dar de baja</button></td>
+                                    <td><?php if($habilitado){?>
+                                            <button class="btn btn-danger" onClick="location.href = 'script_baja_alta_habitacion.php?ID_Habitacion=<?php echo $row['ID'] ?>'" >Dar de baja</button>
+                                        <?php }else{?>
+                                            <button class="btn btn-info" onClick="location.href = 'script_baja_alta_habitacion.php?ID_Habitacion=<?php echo $row['ID'] ?>'" >Dar de alta</button>
+                                        <?php }?>
+                                    </td>
                                     <td><button class="btn btn-warning" onClick="location.href = 'index.php?cat=modificar_habitacion&ID_Habitacion=<?php echo $row['ID'] ?>'" >Modificar</button></td>
                                 </tr>
                             <?php } ?>
