@@ -116,10 +116,10 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th></th>
                                         <th>Nombre</th>
                                         <th>Direccion</th>
-                                        <th>Descripcion</th>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -160,11 +160,10 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 												if(empty($carach)){
 
 													?><tr>
-													<td><?php echo $nhabitacion ?></td>
-													<td><?php echo $row['ID'] ?></td>
+													<td></td>
 													<td><?php echo $row['Nombre'] ?></td>
 													<td><?php echo $row['Direccion'] ?></td>
-													<td><?php echo $row['Descripcion'] ?></td>                               
+													<td></td>                               
 													<td></td>
 													<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 												</tr><?php
@@ -197,10 +196,10 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 														}
 														if($conth==$tamh && $completoh==true){
 															?><tr>
-																<td><?php echo $row['ID'] ?></td>
+																<td><?php echo $rowh['ID'] ?></td>
 																<td><?php echo $row['Nombre'] ?></td>
 																<td><?php echo $row['Direccion'] ?></td>
-																<td><?php echo $row['Descripcion'] ?></td>                               
+																<td></td>                               
 																<td></td>
 																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 																<?php
@@ -220,10 +219,10 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
                                     while ($row = mysql_fetch_array($result)) {
                                         ?>
                                         <tr>
-                                            <td><?php echo $row['ID'] ?></td>
+                                            <td></td>
                                             <td><?php echo $row['Nombre'] ?></td>
                                             <td><?php echo $row['Direccion'] ?></td>
-                                            <td><?php echo $row['Descripcion'] ?></td>
+                                            <td></td>
                                                                                         
                                             <td></td>
                                            <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
