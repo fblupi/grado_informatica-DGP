@@ -35,4 +35,5 @@ if($result)
             }
         }
     }
+	header('location: index.php?cat=gestion_alojamientos');
 }

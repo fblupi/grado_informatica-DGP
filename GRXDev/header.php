@@ -69,8 +69,9 @@ if($_COOKIE['sesion_iniciada'] == false)
                     <li><a href="index.php?cat=buscador"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Gestión de usuarios</a></li>
 					<li><a href="index.php?cat=buscadord"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Gestión de Dueños</a></li>
                     <?php } ?>
-					<?php if ($_COOKIE['tipo_usuario'] == 2) { ?>
-                    <li><a href="index.php?cat=novali"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Informe: No validados</a></li><li><a href="index.php?cat=vali"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Informe: Validados</a></li>
+					<?php if ($_COOKIE['tipo_usuario'] == 2 || $_COOKIE['tipo_usuario'] == 1 ) { ?>
+                    <li><a href="index.php?cat=novali"><i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Informe: No validados</a></li><li><a href="index.php?cat=vali">
+					<i class="glyphicon glyphicon-eye-open" style="color:#888fff;"></i> Informe: Validados</a></li>
                     <?php } ?>
 					 <?php if ($_COOKIE['tipo_usuario'] == 1 || $_COOKIE['tipo_usuario'] == 5) { ?>
                         <li><a href="index.php?cat=gestion_alojamientos"><i class="glyphicon glyphicon-globe" style="color:#888fff;"></i> Gestión de alojamientos</a></li>
