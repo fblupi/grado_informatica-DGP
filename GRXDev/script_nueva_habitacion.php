@@ -33,7 +33,7 @@ for($i=0;$i<$copias;$i=$i+1){
                 $insert=$datos->Query("INSERT INTO caracteristicashabitacion (ID_Caracteristica, ID_Habitacion, Cantidad) VALUES ('$nombreCarac','$id_habitacion','$valorCarac')");
 
             if($insert)
-                echo 'Insertado: '.$nombreCarac.' '.$valorCarac.' <br>';
+                header('location: index.php?cat=gestion_habitaciones&ID_Alojamiento='.$alojamiento);
         }
     }
 }
