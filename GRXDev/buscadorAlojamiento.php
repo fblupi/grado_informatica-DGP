@@ -40,17 +40,6 @@
                     <label for="fechas">Fecha salida</label>
                     <input type="date" id="fechas" name="fechas" class="form-control" onchange="MostrarConsultalojamiento();">
                     </div>
-                    <div class="col-md-3 col-sm-3">  
-					<label for="estrella">Estrellas</label>
-                    <select name="estrella" id="estrella" class="form-control" onchange="MostrarConsultalojamiento();">
-						<option value="">--</option>
-                        <option value="1">1 estrella</option>
-                        <option value="2">2 estrellas</option>
-                        <option value="3">3 estrellas</option>
-						<option value="4">4 estrellas</option>
-						<option value="5">5 estrellas</option>
-                    </select>
-					</div>	
                     <div class="col-md-3 col-sm-3">   
 					<label for="tipo">Tipo de alojamiento</label>
                     <select name="tipo" id="tipo" class="form-control" onchange="MostrarConsultalojamiento();">

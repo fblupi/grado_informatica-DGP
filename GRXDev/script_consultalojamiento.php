@@ -123,8 +123,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th><?php echo $fechae?></th>
-										<th><?php echo $fechas?></th>
+										<th></th>
                                         <th>Nombre</th>
                                         <th>Direccion</th>
                                         <th></th>
@@ -166,16 +165,27 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 									
 											if($cont==$tam && $completo==true){
 												if(empty($carach)){
-
-													?><tr>
-													<td></td>
-													<td><?php echo $row['Nombre'] ?></td>
-													<td><?php echo $row['Direccion'] ?></td>
-													<td></td>                               
-													<td></td>
-													<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
-												</tr><?php
-												}
+													if($fechae!='' && $fechas!=''){
+															$cadena = "select count(*) from reserva_alojamiento where ID_Alojamiento = ".$row['ID']." AND (((Fecha_entrada BETWEEN '$fechae' AND '$fechas') OR (Fecha_salida BETWEEN '$fechae' AND '$fechas')) OR ((Fecha_entrada < '$fechae') AND (Fecha_salida > '$fechas')))" ;
+															$select = $datos->Query($cadena);
+															if($select){
+																$rowp = mysql_fetch_array($select);
+															if($rowp[0] == 0){	
+																?>
+																<tr>
+																<td></td>
+																<td><?php echo $row['Nombre'] ?></td>
+																<td><?php echo $row['Direccion'] ?></td>
+																<td></td>
+																										
+																<td></td>
+																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+																</tr>
+																<?php
+																}
+															}
+														}
+												}//if(empty($carach)){
 												else{
 													$result_carh = $datos->Query("SELECT ID FROM habitacion WHERE ID_Alojamiento=".$row['ID']." and Habilitado!=0");
 													while($rowh = mysql_fetch_array($result_carh)){
@@ -203,6 +213,12 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 															}
 														}
 														if($conth==$tamh && $completoh==true){
+															if($fechae!='' && $fechas!=''){
+																$cadena = "select count(*) from reserva_habitacion where ID_Habitacion = ".$rowh['ID']." AND (((Fecha_entrada BETWEEN '$fechae' AND '$fechas') OR (Fecha_salida BETWEEN '$fechae' AND '$fechas')) OR ((Fecha_entrada < '$fechae') AND (Fecha_salida > '$fechas')))" ;
+																$select = $datos->Query($cadena);
+																if($select){
+																	$rowp = mysql_fetch_array($select);
+																if($rowp[0] == 0){	
 															?><tr>
 																<td><?php echo $rowh['ID'] ?></td>
 																<td><?php echo $row['Nombre'] ?></td>
@@ -214,9 +230,14 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 																if($row['Tipo_alojamiento']==1){?>
 																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=habitacion&ID_Habitacion=<?php echo $rowh['ID']?>'" >Ver Habitacion</button></td>
 																<?php }?>
-															</tr><?php
-														}
-														}
+															</tr><?php 
+																}
+															}
+															}
+															
+															
+														}//if($conth==$tamh && $completoh==true){
+														}//if(!empty($result_cart)){
 													
 													}//while($rowh = mysql_fetch_array($result_carh))
 												}//else
@@ -224,18 +245,28 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 										}
 									}
 									else{
-                                    while ($row = mysql_fetch_array($result)) {
-                                        ?>
-                                        <tr>
-                                            <td></td>
-                                            <td><?php echo $row['Nombre'] ?></td>
-                                            <td><?php echo $row['Direccion'] ?></td>
-                                            <td></td>
+                                    while ($row = mysql_fetch_array($result)){
+										if($fechae!='' && $fechas!=''){
+											$cadena = "select count(*) from reserva_alojamiento where ID_Alojamiento = ".$row['ID']." AND (((Fecha_entrada BETWEEN '$fechae' AND '$fechas') OR (Fecha_salida BETWEEN '$fechae' AND '$fechas')) OR ((Fecha_entrada < '$fechae') AND (Fecha_salida > '$fechas')))" ;
+											$select = $datos->Query($cadena);
+											if($select){
+												$rowp = mysql_fetch_array($select);
+											if($rowp[0] == 0){	
+												?>
+												<tr>
+												<td></td>
+												<td><?php echo $row['Nombre'] ?></td>
+												<td><?php echo $row['Direccion'] ?></td>
+												<td></td>
                                                                                         
-                                            <td></td>
-                                           <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
-                                        </tr>
-                                    <?php } } ?>
+												<td></td>
+												<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+												</tr>
+												<?php
+												}
+											}
+										}
+										} } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -255,3 +286,4 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
     </div>
 </div>
 </div>
+
