@@ -21,17 +21,18 @@ if (isset($_POST['reserva_desde']) && isset($_POST['reserva_hasta']) && isset($_
             $row = mysql_fetch_array($select);
             if($row[0] == 0)
             {
-                $result = $datos->Query("insert into reserva_alojamiento (ID_Alojamiento,ID_Usuario,Fecha_entrada,Fecha_salida,NumeroTarjeta,TipoTarjeta) values ('$id_alojamiento','$id_usuario','$desde_sql','$hasta_sql','$tarjeta','$tipo_tarjeta')");
+                $cadena2 = "insert into reserva_alojamiento (ID_Alojamiento,ID_Usuario,Fecha_entrada,Fecha_Salida,NumeroTarjeta,TipoTarjeta) values ('$id_alojamiento','$id_usuario','$desde_sql','$hasta_sql','$tarjeta','$tipo_tarjeta')";
+                $result = $datos->Query($cadena2);
                 //Comprobamos que se ha realizado el insert correctamente
                 if ($result) {
                     header('location: index.php');
                 } else {
-                    header('location: reservar_alojamiento.php?error_reserva=true');
+                    header('location: reservar_alojamiento.php?error_reserva=true&ID_Alojamiento='.$id_alojamiento);
                 }
             }
             else
             {
-                header('location: reservar_alojamiento.php?error_fechas_ocupadas=true');
+                header('location: reservar_alojamiento.php?error_fechas_ocupadas=true&ID_Alojamiento='.$id_alojamiento);
             }
         }
         else
@@ -41,6 +42,6 @@ if (isset($_POST['reserva_desde']) && isset($_POST['reserva_hasta']) && isset($_
     }
     else
     {
-        header('location: reservar_alojamiento.php?error_fechas=true');
+        header('location: reservar_alojamiento.php?error_fechas=true&ID_Alojamiento='.$id_alojamiento);
     }
 }
