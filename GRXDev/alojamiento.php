@@ -12,40 +12,6 @@
         </div> 
         
         <?php }} ?>
-		<?php //para los fallos a la hora de modificar
-        if(isset($_GET['fallo']))
-        {
-        if($_GET['fallo'] == "hueco"){ ?>
-        
-        <div class="col-md-12 col-sm-12">
-            <div class="alert alert-danger alert-dismissable">No ha rellenado todos los campos necesarios.</div>
-        </div> 
-        
-        <?php }
-		//para los fallos al introducir la contraseña actual
-        if($_GET['fallo'] == "actual"){ ?>
-        
-        <div class="col-md-12 col-sm-12">
-            <div class="alert alert-danger alert-dismissable">Contraseña actual Incorrecta.</div>
-        </div> 
-        
-        <?php }
-		if($_GET['fallo'] == "contra"){ ?>
-		
-		<div class="col-md-12 col-sm-12">
-            <div class="alert alert-danger alert-dismissable">Las contraseñas no coinciden</div>
-        </div> 
-		<?php }} ?>
-		<?php 
-        if(isset($_GET['exito']))//Si se han realizado la modificacion bien
-        {
-        if($_GET['exito'] == "modi"){ ?>
-        
-        <div class="col-md-12 col-sm-12">
-            <div class="alert alert-success">Se han realizado los cambios.</div>
-        </div> 
-        
-        <?php }} ?>
 		
         <?php
         include 'conexionBD.php';
@@ -83,7 +49,36 @@
                     }
 			  
 			  ?>
-			  
+			  <div class="clearfix"></div>
+			  <h5>Comentarios<h5>
+  
+			<!--Seccion de opiniones de los usuarios  -->
+			<div id="opinion">
+				<?php 
+					$select="SELECT * FROM comentarioalojamiento WHERE ID_Alojamiento=".$id;
+					$result=$datos->Query($select);
+					while($row=mysql_fetch_array($result)){
+						$usu="SELECT * FROM usuarios WHERE ID_Usuario=".$row['ID_Usuario'];
+						$result2=$datos->Query($usu);
+						$rowu=mysql_fetch_array($result2)
+					?>
+					<!--Comentario   -->
+					<div class="comentario">
+					<h6><?php echo $rowu['Nombre_usuario']."  ".$row['Fecha']." ".$row['Hora']; ?><a >Borrar Comentario</a></h6>
+					<p><?php echo $row['Comentario']; ?></p>
+					</div>
+					<?php
+					}
+				?>
+
+			  </div>
+			  <!-- Formulario de comentario-->
+			  <form action="script_nuevo_comentario.php" method="post">
+			  <p>Añade tu comentario</p>
+			  <textarea type="text" id="comentario" rows="5" name="comentario" class="form-control" value=""></textarea>
+			  <input type="hidden" name="id" value="<?php  echo $id?>">
+			  <button type="submit" class="btn btn-success" style="margin-top:2%;" > Añadir comentario</button>
+			  </form>
               <div class="clearfix"></div>
 			  <hr>
               <?php $result=$datos->Query("SELECT * FROM alojamiento WHERE ID='$id'");

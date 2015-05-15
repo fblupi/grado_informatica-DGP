@@ -102,6 +102,61 @@ h3,h4,h5 {
 #main {
  padding-top:120px;
 }
+/*///////////////////////////////*/
+/*Productos-Seccion de opiniones*/
+/*///////////////////////////////*/
+#opinion{
+	float:left;
+	height:250px;	
+	margin-left:1%;
+	margin-bottom:2%;
+	width:97%;
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+#opinion h3{
+	margin-left:1%;
+	margin-top:0%;
+
+}
+/*/////////////////////////////////////////////////////*/
+/*Productos-Seccion de Opinion-Titulo*/
+/*////////////////////////////////////////////////////*/
+#etiqueta-opi{
+	float:left;
+	padding-right:50%;
+	margin-left:1%;
+
+}
+/*/////////////////////////////////////////////////////*/
+/*Productos-Seccion de opiniones-Caja de comentario*/
+/*////////////////////////////////////////////////////*/
+.comentario{
+	width:98%;
+	background-color:white;
+	margin-left:1%;
+	margin-right:1%;
+	margin-bottom:1%;
+	border:1px solid gray;
+	border-radius: 10px 10px 10px 10px;
+}
+.comentario h6{	
+	width:97%;
+	padding-top:1%;
+	margin-left:1%;
+	margin-top:0%;
+}
+.comentario hr{
+	color:black;
+}
+.comentario a{
+	float:right;
+	
+}
+.comentario p{
+	margin-left:1%;
+	padding-bottom:1%;
+}
 
 
 
