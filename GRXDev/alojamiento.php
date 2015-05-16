@@ -1,5 +1,7 @@
 
         <!--main-->
+		<link href="css/estrellas.css" rel="stylesheet">
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
 <div class="container" id="main">
     <div class="row">
         <?php 
@@ -21,10 +23,65 @@
 		$result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamiento WHERE ID=".$id);
 		//if(mysql_num_rows($result) > 0)
 		$fila2 = mysql_fetch_array($result);
+	
+                if(isset($_COOKIE['id_usuario']))
+                {
+                    $valoraciones = $datos->Query("Select count(*) from valoracionalojamiento where ID_Alojamiento=".$id." AND ID_Usuario=".$_COOKIE['id_usuario']);
+                    $valoracion_row = mysql_fetch_array($valoraciones);
+                    if($valoracion_row[0] != "0")
+                    {
+                            $yavalorado = true;
+                    }
+                    else
+                    {
+                            $yavalorado = false;
+                            if(isset($_GET['Valoracion']))
+                            {
+                                    $insertar = $datos->Query("insert into valoracionalojamiento (ID_Alojamiento,ID_Usuario,valoracion) values (".$id.",".$_COOKIE['id_usuario'].",".$_GET['Valoracion'].")");
+                                    if($insertar==true)
+                                    {
+                                            $yavalorado = true;
+                                    }	
+                            }
+                    }
+                }
 		?>
       <div class="col-md-12 col-sm-12">
     	<div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4><?php echo $fila2['Nombre']?></h4></div>
+           <div class="panel-heading"><a href="#" class="pull-right">View all</a> 
+		   <h4>
+		   <?php echo $fila2['Nombre'];
+		   if((isset($yavalorado) && $yavalorado == true) || (!isset($_COOKIE['id_usuario'])))
+		   {
+                            $total = $datos->Query("Select AVG(valoracion) from valoracionalojamiento where ID_Alojamiento=".$id);
+                            $total_row = mysql_fetch_array($total);
+                            if($total_row[0] == null)
+                            {
+                                $media = "3";
+                            }
+                            else
+                            {
+                                $media = $total_row[0];
+                            }
+			   ?>
+			    <div class="progress" style="width:50%; height:20px">
+					<div class="progress-bar progress-bar-success" style="width:<?php echo (intval($media)*20); ?>%">Valoración: <?php echo intval($media);?>/5</div>
+				</div>
+			   <?php
+		   }
+		   else
+		   {
+		   ?>
+		   <div class="ec-stars-wrapper">
+				<a onClick="valorar(1)" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+				<a onClick="valorar(2)" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+				<a onClick="valorar(3)" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+				<a onClick="valorar(4)" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+				<a onClick="valorar(5)" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+			</div>
+			<noscript>Necesitas tener habilitado javascript para poder votar</noscript>
+		   <?php } ?>
+		   </h4></div>
    			<div class="panel-body">
 			  <img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:35%; width:30%; height:30%;">
 			  <hr>
@@ -148,3 +205,12 @@
             </div>
         </div>
 </div><!--/main-->
+
+		   <script>
+		   function valorar(valoracion) 
+		   {
+			   var direccion = window.location.href;
+			   valoracion = "Valoracion="+valoracion;
+				window.location.assign(direccion+"&"+valoracion);
+		   }
+		   </script>
