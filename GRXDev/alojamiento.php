@@ -121,7 +121,10 @@
 					?>
 					<!--Comentario   -->
 					<div class="comentario">
-					<h6><?php echo $rowu['Nombre_usuario']."  ".$row['Fecha']." ".$row['Hora']; ?><a >Borrar Comentario</a></h6>
+					<h6><?php echo $rowu['Nombre_usuario']."  ".$row['Fecha']." ".$row['Hora']." ".$row['ID_Comentario']; 
+					if(isset($_COOKIE['id_usuario']) && ($row['ID_Usuario']==$_COOKIE['id_usuario'])){ ?>
+					<a href="script_eliminar_comentario.php?ID_Comentario=<?php echo $row['ID_Comentario']; ?>&alo=<?php echo $id?>">Borrar Comentario</a> <?php }?>
+					</h6>
 					<p><?php echo $row['Comentario']; ?></p>
 					</div>
 					<?php
@@ -130,12 +133,14 @@
 
 			  </div>
 			  <!-- Formulario de comentario-->
+			  <?php if(isset($_COOKIE['sesion_iniciada']) && $_COOKIE['sesion_iniciada']==true){ ?>
 			  <form action="script_nuevo_comentario.php" method="post">
 			  <p>Añade tu comentario</p>
 			  <textarea type="text" id="comentario" rows="5" name="comentario" class="form-control" value=""></textarea>
 			  <input type="hidden" name="id" value="<?php  echo $id?>">
 			  <button type="submit" class="btn btn-success" style="margin-top:2%;" > Añadir comentario</button>
 			  </form>
+			  <?php } ?>
               <div class="clearfix"></div>
 			  <hr>
               <?php $result=$datos->Query("SELECT * FROM alojamiento WHERE ID='$id'");
