@@ -102,7 +102,7 @@ $fechae = strtotime($fechae);
 $fechas = strtotime($fechas);
 $fechae = date('Y-m-d',$fechae);
 $fechas = date('Y-m-d',$fechas);
-
+$habitaciones_bus=false;
 //Comprobamos que hay algun campo "relleno"
 if($nombre=='' && $tipo=='' && $ubicacion=='' && $piscina=='' && $wifi=='' && $spa=='' && $desayuno=='' && $nhabitacion=='' && $estrella=='' && $cafeteria=='' && $discoteca=='' && $pista=='' 
 && $wifih=='' && $ncamas=='' && $bano=='' && $tele=='' && $caja=='' && $armario=='' && $precio=='' && $precioh=='' && $fechae=='' && $fechas==''){
@@ -120,6 +120,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
             <?php if (!empty($result)) { ?>
                     <div class="row">
                         <div class="table-responsive">
+							<form action="script_reservar_habitacion.php" method="post">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -179,7 +180,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 																<td></td>
 																										
 																<td></td>
-																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+																<td><button type="reset" class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 																</tr>
 																<?php
 																}
@@ -218,17 +219,19 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 																$select = $datos->Query($cadena);
 																if($select){
 																	$rowp = mysql_fetch_array($select);
-																if($rowp[0] == 0){	
+																if($rowp[0] == 0){
+																$habitaciones_bus=true;
 															?><tr>
 																<td><?php echo $rowh['ID'] ?></td>
 																<td><?php echo $row['Nombre'] ?></td>
 																<td><?php echo $row['Direccion'] ?></td>
 																<td></td>                               
 																<td></td>
-																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+																<td><button type="reset" class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 																<?php
 																if($row['Tipo_alojamiento']==1){?>
-																<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=habitacion&ID_Habitacion=<?php echo $rowh['ID']?>'" >Ver Habitacion</button></td>
+																<td><button type="reset" class="btn btn-primary" onClick="location.href = 'index.php?cat=habitacion&ID_Habitacion=<?php echo $rowh['ID']?>'" >Ver Habitacion</button></td>
+																<td><input type="checkbox" id="<?php echo $rowh['ID']?>" value="<?php echo $rowh['ID']?>" name="habitacion[]"  ></td>
 																<?php }?>
 															</tr><?php 
 																}
@@ -260,15 +263,18 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
 												<td></td>
                                                                                         
 												<td></td>
-												<td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
+												<td><button type="reset" class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $row['ID']?>'" >Ver Mas</button></td>
 												</tr>
 												<?php
 												}
 											}
 										}
-										} } ?>
+										} }}?>
                                 </tbody>
                             </table>
+							<?php if($habitaciones_bus==true){?>
+								<button type="submit" class="btn btn-success" style="margin-left:2%;" > Realizar Reserva</button></form>
+							<?php}?>
                         </div>
                         <div class="col-md-12 text-center">
                             <ul class="pagination pagination-lg pager" id="myPager"></ul>
