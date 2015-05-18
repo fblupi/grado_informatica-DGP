@@ -1,6 +1,7 @@
 
         <!--main-->
 		<link href="css/estrellas.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
 <div class="container" id="main">
     <div class="row">

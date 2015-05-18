@@ -12,13 +12,25 @@ if($_COOKIE['sesion_iniciada'] == false)
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>GRXDev</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+				<style>
+body{
+	<?php if($_COOKIE['color'] == 0 || (!isset($_COOKIE['color'])))
+	{
+	echo "filter: grayscale(0%); -webkit-filter: grayscale(0%); -moz-filter: grayscale(0%); -ms-filter: grayscale(0%); -o-filter: grayscale(0%);";
+	}
+	else
+	{
+	echo "filter: grayscale(100%); -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -ms-filter: grayscale(100%); -o-filter: grayscale(100%);";
+	} ?>
+}
+</style>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,6 +41,9 @@ if($_COOKIE['sesion_iniciada'] == false)
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
 		<script type="text/javascript" src="js/ajax.js"></script>
+
+
+
     </head>
 <nav class="navbar navbar-fixed-top header">
     <div class="col-md-12">
@@ -41,12 +56,9 @@ if($_COOKIE['sesion_iniciada'] == false)
 
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse1">
-            <form class="navbar-form pull-left">
+            <form class="navbar-form pull-right">
                 <div class="input-group" style="max-width:470px;">
-                    <input type="text" class="form-control" placeholder="Buscar" name="srch-term" id="srch-term">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
+                    <input type="image" src="images/accessibility.png" onclick="cambiarColores()" alt="Submit" width="32" height="32">
                 </div>
             </form>
         </div>	
@@ -99,3 +111,22 @@ if($_COOKIE['sesion_iniciada'] == false)
         </div>	
     </div>	
 </div>
+
+<script>
+function cambiarColores(){
+	 
+	if(<?php if(!isset($_COOKIE['color'])) echo 0; else echo 1;?> == 0 || <?php echo $_COOKIE['color'];?> == 0)
+	{
+		document.cookie= "color=1";
+	}
+	else
+	{
+		document.cookie= "color=0";
+	}
+	
+	var direccion = window.location.href;
+	window.location.assign(direccion);
+}
+</script>
+
+
