@@ -120,7 +120,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
             <?php if (!empty($result)) { ?>
                     <div class="row">
                         <div class="table-responsive">
-							<form action="script_reservar_habitacion.php" method="post">
+							<form action="index.php?cat=reserva_multiple" method="post">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -273,7 +273,7 @@ $result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,Tipo_alojamient
                                 </tbody>
                             </table>
 							<?php if($habitaciones_bus==true){?>
-								<button type="submit" class="btn btn-success" style="margin-left:2%;" > Realizar Reserva</button></form>
+								<button type="submit" class="btn btn-success" style="margin-left:2%;" > Realizar reserva</button></form>
 							<?php}?>
                         </div>
                         <div class="col-md-12 text-center">
