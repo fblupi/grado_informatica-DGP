@@ -115,7 +115,7 @@ body{
 <script>
 function cambiarColores(){
 	 
-	if(<?php if(!isset($_COOKIE['color'])) echo 0; else echo 1;?> == 0 || <?php echo $_COOKIE['color'];?> == 0)
+	if(<?php if(!isset($_COOKIE['color']) || $_COOKIE['color']==0) echo 0; else echo 1;?> == 0)
 	{
 		document.cookie= "color=1";
 	}
