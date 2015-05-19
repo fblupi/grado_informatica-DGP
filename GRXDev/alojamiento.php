@@ -53,6 +53,8 @@
 		   <?php echo $fila2['Nombre'];
 				//COMPROBAMOS QUE SE HA VISITADO EL ALOJAMIENTO O ALGUNA DE SUS HABITACIONES POR EL USUARIO, ANTERIOR A LA FECHA DE HOY
                    $existe_reserva = false;
+				   if(isset($_COOKIE['id_usuario']))
+				   {
                    $reservas_alojamiento = $datos->Query("select count(*) from reserva_alojamiento where Fecha_salida < NOW() AND ID_USUARIO='".$_COOKIE['id_usuario']."' AND ID_ALojamiento=".$id);
                    $reservas_alojamiento_row = mysql_fetch_array($reservas_alojamiento);
                    if($reservas_alojamiento_row[0] == 0)
@@ -72,6 +74,7 @@
                    {
                        $existe_reserva = true;
                    }
+				   }
 			   //FIN DE COMPROBACION DE VISITA
 		   if((isset($yavalorado) && $yavalorado == true) || (!isset($_COOKIE['id_usuario'])) || $existe_reserva == false)
 		   {
