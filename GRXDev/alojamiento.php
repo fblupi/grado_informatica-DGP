@@ -21,7 +21,7 @@
 
 		$id = isset($_GET['ID_Alojamiento']) ? $_GET['ID_Alojamiento'] : null;
 
-		$result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion FROM alojamiento WHERE ID=".$id);
+		$result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,src_img FROM alojamiento WHERE ID=".$id);
 		//if(mysql_num_rows($result) > 0)
 		$fila2 = mysql_fetch_array($result);
 	
@@ -84,7 +84,12 @@
 		   <?php } ?>
 		   </h4></div>
    			<div class="panel-body">
-			  <img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:35%; width:30%; height:30%;">
+                <?php if($fila2['src_img']==null) {
+                    echo '<img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:35%; width:30%; height:30%;">';
+                }else{
+                    echo '<img src="'.$fila2['src_img'].'" class="img-responsive img-thumbnail pull-center" style="margin-left:35%; width:30%; height:30%;">';
+                }?>
+
 			  <hr>
               <h5>Descripción<h5>
               <p><?php echo $fila2['Descripcion']?></p>

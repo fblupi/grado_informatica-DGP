@@ -9,7 +9,7 @@
             <div class="panel panel-warning">
                 <div class="panel-heading"><h4>Añadir alojamiento</h4></div>
                 <div class="panel-body">
-                <form class="form col-md-12" action="script_nuevo_alojamiento.php" method="post">
+                <form enctype="multipart/form-data" class="form col-md-12" action="script_nuevo_alojamiento.php" method="post">
                     <div class="form-group col-md-3 col-sm-3">    
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="add_nombre" class="form-control">
@@ -30,6 +30,11 @@
                         <label for="nombre">Precio</label>
                         <input type="text" id="nombre" name="add_precio" class="form-control">
                     </div>
+                    <div class="form-group col-md-2 col-sm-2">
+                        <label for="nombre">Imagen</label>
+                        <input type="file" name="uploadedfile" />
+                    </div>
+                    <div style="clear:left"></div>
                     <div class="form-group col-md-9 col-sm-9">    
                         <label for="nombre">Descripción</label>
                         <textarea type="text" id="nombre" rows="5" name="add_descripcion" class="form-control"></textarea>
