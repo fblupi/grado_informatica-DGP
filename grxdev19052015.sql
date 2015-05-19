@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-05-2015 a las 12:34:18
+-- Tiempo de generación: 19-05-2015 a las 12:57:06
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `caracteristicas` (
   `Descripcion` varchar(255) NOT NULL,
   `Tipo` varchar(255) NOT NULL,
   `Tipo_check` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `caracteristicas`
@@ -79,7 +79,7 @@ INSERT INTO `caracteristicas` (`ID_Caracteristicas`, `Descripcion`, `Tipo`, `Tip
 (6, 'Numero_de_camas', '1', 0),
 (7, 'Numero_de_Habitaciones', '0', 0),
 (8, 'Cafeteria', '0', 1),
-(9, 'Baño', '1', 0),
+(9, 'Aseo', '1', 1),
 (10, 'Television', '1', 1),
 (11, 'Caja_fuerte', '1', 1),
 (12, 'Armario', '1', 1),
@@ -87,7 +87,10 @@ INSERT INTO `caracteristicas` (`ID_Caracteristicas`, `Descripcion`, `Tipo`, `Tip
 (14, 'Pista_Deportiva', '0', 1),
 (15, 'Estrellas', '0', 0),
 (16, 'Precio', '0', 0),
-(17, 'Precio', '1', 0);
+(17, 'Precio', '1', 0),
+(18, 'Bañera', '1', 1),
+(19, 'Ducha', '1', 1),
+(20, 'Hidromasaje', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -196,20 +199,21 @@ INSERT INTO `comentarioalojamiento` (`ID_Comentario`, `ID_Alojamiento`, `ID_Usua
 CREATE TABLE IF NOT EXISTS `habitacion` (
 `ID` int(10) NOT NULL,
   `ID_Alojamiento` int(10) NOT NULL,
-  `Habilitado` int(10) NOT NULL
+  `Habilitado` int(10) NOT NULL,
+  `img_src` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `habitacion`
 --
 
-INSERT INTO `habitacion` (`ID`, `ID_Alojamiento`, `Habilitado`) VALUES
-(1, 1, 6),
-(2, 1, 6),
-(3, 2, 6),
-(4, 2, 6),
-(5, 1, 6),
-(6, 1, 6);
+INSERT INTO `habitacion` (`ID`, `ID_Alojamiento`, `Habilitado`, `img_src`) VALUES
+(1, 1, 6, NULL),
+(2, 1, 6, NULL),
+(3, 2, 6, NULL),
+(4, 2, 6, NULL),
+(5, 1, 6, NULL),
+(6, 1, 6, NULL);
 
 -- --------------------------------------------------------
 
@@ -427,7 +431,7 @@ MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT de la tabla `caracteristicas`
 --
 ALTER TABLE `caracteristicas`
-MODIFY `ID_Caracteristicas` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `ID_Caracteristicas` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `comentarioalojamiento`
 --
