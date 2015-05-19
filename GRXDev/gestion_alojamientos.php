@@ -40,6 +40,16 @@
                         <textarea type="text" id="nombre" rows="5" name="add_descripcion" class="form-control"></textarea>
                     </div>
                     <div style="clear:left"></div>
+                    <div class="form-group col-md-2 col-sm-2">
+                        <label for="nombre">Audio de descripción</label>
+                        <input type="file" name="uploadedaudio" />
+                    </div>
+                    <div style="clear:left"></div>
+                    <div class="form-group col-md-2 col-sm-2">
+                        <label for="nombre">Video en lengua de signos</label>
+                        <input type="file" name="uploadedvideo" />
+                    </div>
+                    <div style="clear:left"></div>
                     <div class="panel-heading"><h4>Servicios</h4></div>
                         <div class="panel-body">
                     <?php

@@ -21,14 +21,14 @@ if($_COOKIE['sesion_iniciada'] == false)
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 				<style>
 body{
-	<?php if($_COOKIE['color'] == 0 || (!isset($_COOKIE['color'])))
-	{
-	echo "filter: grayscale(0%); -webkit-filter: grayscale(0%); -moz-filter: grayscale(0%); -ms-filter: grayscale(0%); -o-filter: grayscale(0%);";
-	}
-	else
-	{
-	echo "filter: grayscale(100%); -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -ms-filter: grayscale(100%); -o-filter: grayscale(100%);";
-	} ?>
+        <?php if($_COOKIE['color'] == 0 || (!isset($_COOKIE['color'])))
+        {
+        echo "filter: grayscale(0%); -webkit-filter: grayscale(0%); -moz-filter: grayscale(0%); -ms-filter: grayscale(0%); -o-filter: grayscale(0%);";
+        }
+        else
+        {
+        echo "filter: grayscale(100%); -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -ms-filter: grayscale(100%); -o-filter: grayscale(100%);";
+        } ?>
 }
 </style>
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -115,7 +115,7 @@ body{
 <script>
 function cambiarColores(){
 	 
-	if(<?php if(!isset($_COOKIE['color']) || $_COOKIE['color']==0) echo 0; else echo 1;?> == 0)
+	if(<?php if(!isset($_COOKIE['color'])) echo 0; else echo 1;?> == 0 || <?php echo $_COOKIE['color'];?> == 0)
 	{
 		document.cookie= "color=1";
 	}

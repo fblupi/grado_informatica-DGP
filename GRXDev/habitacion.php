@@ -60,7 +60,7 @@
     	<div class="panel panel-default">
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Habitacion<?php //echo $fila2['Nombre']?></h4></div>
    			<div class="panel-body">
-			  <img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:35%; width:30%; height:30%;">
+			  <img alt="imagen-habitacion" src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:35%; width:30%; height:30%;">
 			  <hr>
 			  <h5>Caracteristicas<h5>
 			  <?php
