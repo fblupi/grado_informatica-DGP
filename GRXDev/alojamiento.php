@@ -20,7 +20,6 @@
         include 'conexionBD.php';
 
 		$id = isset($_GET['ID_Alojamiento']) ? $_GET['ID_Alojamiento'] : null;
-
 		$result = $datos->Query("SELECT ID, Nombre,Direccion,Descripcion,src_img FROM alojamiento WHERE ID=".$id);
 		//if(mysql_num_rows($result) > 0)
 		$fila2 = mysql_fetch_array($result);
@@ -52,7 +51,29 @@
            <div class="panel-heading"><a href="#" class="pull-right">View all</a> 
 		   <h4>
 		   <?php echo $fila2['Nombre'];
-		   if((isset($yavalorado) && $yavalorado == true) || (!isset($_COOKIE['id_usuario'])))
+				//COMPROBAMOS QUE SE HA VISITADO EL ALOJAMIENTO O ALGUNA DE SUS HABITACIONES POR EL USUARIO, ANTERIOR A LA FECHA DE HOY
+                   $existe_reserva = false;
+                   $reservas_alojamiento = $datos->Query("select count(*) from reserva_alojamiento where Fecha_salida < NOW() AND ID_USUARIO='".$_COOKIE['id_usuario']."' AND ID_ALojamiento=".$id);
+                   $reservas_alojamiento_row = mysql_fetch_array($reservas_alojamiento);
+                   if($reservas_alojamiento_row[0] == 0)
+                   {
+                       $reservas_habitacion = $datos->Query("select COUNT(RH.ID_Habitacion) from Reserva_habitacion RH, Habitacion H where H.ID_Alojamiento = '".$id."' AND RH.ID_Usuario = '".$_COOKIE['id_usuario']."' AND RH.Fecha_salida < NOW() AND RH.ID_HABITACION = H.ID");
+						$reservas_habitacion_row = mysql_fetch_array($reservas_habitacion);
+						if($reservas_habitacion_row[0] == 0)
+						{
+							$exite_reserva = false;
+						}
+						else
+						{
+							$existe_reserva = true;
+						}
+                   }
+                   else
+                   {
+                       $existe_reserva = true;
+                   }
+			   //FIN DE COMPROBACION DE VISITA
+		   if((isset($yavalorado) && $yavalorado == true) || (!isset($_COOKIE['id_usuario'])) || $existe_reserva == false)
 		   {
                             $total = $datos->Query("Select AVG(valoracion) from valoracionalojamiento where ID_Alojamiento=".$id);
                             $total_row = mysql_fetch_array($total);
@@ -89,7 +110,6 @@
                 }else{
                     echo '<img src="'.$fila2['src_img'].'" class="img-responsive img-thumbnail pull-center" style="margin-left:35%; width:30%; height:30%;">';
                 }?>
-
 			  <hr>
               <h5>Descripción<h5>
               <p><?php echo $fila2['Descripcion']?></p>
