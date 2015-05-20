@@ -1,7 +1,7 @@
 <?php
 include 'conexionBD.php';
 
-$result = $datos->Query("SELECT ID,Nombre,Direccion from alojamiento where ID_Validador!=0 and Fecha_validacion!=0");
+$result = $datos->Query("SELECT ID,Nombre,Direccion,ID_Validador from alojamiento where ID_Validador!=0 and Fecha_validacion!=0");
 
 ?>
 <div class="container" id="main">
@@ -19,7 +19,7 @@ $result = $datos->Query("SELECT ID,Nombre,Direccion from alojamiento where ID_Va
                                         <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Direccion</th>
-                                        <th></th>
+                                        <th>ID Validador</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -36,6 +36,7 @@ $result = $datos->Query("SELECT ID,Nombre,Direccion from alojamiento where ID_Va
                                             <td><?php echo $row['ID'] ?></td>
                                             <td><?php echo$row['Nombre'] ?></td>
                                             <td><?php echo$row['Direccion'] ?></td>
+											<td><?php echo$row['ID_Validador'] ?></td>
                                             
                                             <td><button class="btn btn-primary" onClick="location.href = 'index.php?cat=alojamiento&alojamiento=<?php echo $row['ID'] ?>'" >Ver mas</button></td>
 											<td></td>

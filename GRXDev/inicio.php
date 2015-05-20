@@ -20,11 +20,11 @@ include 'conexionBD.php';
         <?php }} ?>
 
 	<?php
-	$select="SELECT * FROM valoracionalojamiento ORDER BY Valoracion";
+	$select="SELECT ID_Alojamiento, AVG(Valoracion) FROM valoracionalojamiento GROUP BY ID_Alojamiento ORDER BY AVG(Valoracion)";
 	$result=$datos->query($select);
 	$cont=0;
 	while($row = mysql_fetch_array($result)){
-		if($cont<3){
+		if($cont<6){
 			$select2="SELECT * FROM alojamiento WHERE ID=".$row['ID_Alojamiento'];
 			$cont++;
 			$result2=$datos->query($select2);
@@ -56,8 +56,74 @@ include 'conexionBD.php';
 			<?php
 		}
 	}
-	
 	?>
+					<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
+					<div class="panel-body">
+					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
+					<div class="clearfix"></div>
+					<hr>
+					<div style="height:15%">
+					<p> prueba2</p>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
+					<div class="clearfix"></div>                            
+            </div>
+         </div> 
+    </div>
+					<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
+					<div class="panel-body">
+					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
+					<div class="clearfix"></div>
+					<hr>
+					<div style="height:15%">
+					<p> prueba2</p>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
+					<div class="clearfix"></div>                            
+            </div>
+         </div> 
+    </div>				<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
+					<div class="panel-body">
+					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
+					<div class="clearfix"></div>
+					<hr>
+					<div style="height:15%">
+					<p> prueba2</p>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
+					<div class="clearfix"></div>                            
+            </div>
+         </div> 
+    </div>
+					<div class="col-md-4 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
+					<div class="panel-body">
+					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
+					<div class="clearfix"></div>
+					<hr>
+					<div style="height:15%">
+					<p> prueba2</p>
+					</div>
+					<div class="clearfix"></div>
+					<hr>
+					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
+					<div class="clearfix"></div>                            
+            </div>
+         </div> 
+    </div>
     </div><!--/articles-->		
 </div>	
 </div>		

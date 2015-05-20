@@ -149,7 +149,7 @@
 			  
 			  ?>
 			  <div class="clearfix"></div>
-			  <h5>Comentarios<h5>
+			  <h5>Foto<h5>
   
 			<!--Seccion de opiniones de los usuarios  -->
 			<div id="opinion">

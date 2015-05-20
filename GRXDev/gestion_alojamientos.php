@@ -23,7 +23,8 @@
                         <select name="add_tipo" id="estrella" class="form-control">
                             <option value="1">Hotel</option>
                             <option value="2">Casa rural</option>
-                            <option value="3">Piso</option>
+							<option value="3">Piso-parcial</option>
+							<option value="4">Piso completo</option>
                         </select>
                     </div>
                     <div class="form-group col-md-2 col-sm-2">    
