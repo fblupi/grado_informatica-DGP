@@ -20,24 +20,32 @@ include 'conexionBD.php';
         <?php }} ?>
 
 	<?php
-	$select="SELECT * FROM valoracionalojamiento";
+	$select="SELECT * FROM valoracionalojamiento ORDER BY Valoracion";
 	$result=$datos->query($select);
 	$cont=0;
 	while($row = mysql_fetch_array($result)){
-		if($cont<4){
+		if($cont<3){
 			$select2="SELECT * FROM alojamiento WHERE ID=".$row['ID_Alojamiento'];
 			$cont++;
 			$result2=$datos->query($select2);
 			$rowalo = mysql_fetch_array($result2);
+			if($rowalo['src_img']==null){
+				$imagen="images/h_prueba.jpg";
+			}
+			else{
+				$imagen=$rowalo['src_img'];
+			}
 			?>
-			<div class="col-md-3 col-sm-6">
+			<div class="col-md-4 col-sm-6">
 				<div class="panel panel-default">
 					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4><?php echo $rowalo['Nombre'] ?></h4></div>
 					<div class="panel-body">
-					<img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
+					<img src="<?php echo $imagen?>" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
 					<div class="clearfix"></div>
 					<hr>
+					<div style="height:15%">
 					<p><?php echo $rowalo['Descripcion']?></p>
+					</div>
 					<div class="clearfix"></div>
 					<hr>
 					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $rowalo['ID']?>'" >Ver Mas</button>
