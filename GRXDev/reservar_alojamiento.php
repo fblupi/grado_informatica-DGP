@@ -33,10 +33,10 @@
                 <div class="panel-body">
                     <form class="form col-md-8 center-block" action="script_reservar_alojamiento.php?ID_Alojamiento=<?php echo $_GET['ID_Alojamiento'];?>" method="post">
                         <div class="form-group">
-                            <input type="text" name="reserva_desde" class="form-control" placeholder="Desde (26-01-2015)">
+                            <input type="date" name="reserva_desde" class="form-control" placeholder="Desde (26-01-2015)">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="reserva_hasta" class="form-control" placeholder="Hasta (26-01-2015)">
+                            <input type="date" name="reserva_hasta" class="form-control" placeholder="Hasta (26-01-2015)">
                         </div>
                         <div class="form-group">
                             <input type="text" name="reserva_tarjeta" class="form-control" placeholder="NºTarjeta">
