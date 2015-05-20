@@ -1,4 +1,6 @@
-
+<?php 
+include 'conexionBD.php';
+?>
         <!--main-->
 <div class="container" id="main">
      <div class="col-md-12 col-sm-12">
@@ -16,67 +18,38 @@
         </div> 
         
         <?php }} ?>
-        
-     <div class="col-md-3 col-sm-6">
-    	<div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Hotel prado</h4></div>
-   			<div class="panel-body">
-			  <img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-              <div class="clearfix"></div>
-			  <hr>
-              <p>The more powerful (and 100% fluid) Bootstrap 3 grid now comes in 4 sizes (or "breakpoints"). Tiny (for smartphones), Small (for tablets), Medium (for laptops) and Large (for laptops/desktops)</p>
-              <div class="clearfix"></div>
-              <hr>
-              <div class="clearfix"></div>              
-              
+
+	<?php
+	$select="SELECT * FROM valoracionalojamiento";
+	$result=$datos->query($select);
+	$cont=0;
+	while($row = mysql_fetch_array($result)){
+		if($cont<4){
+			$select2="SELECT * FROM alojamiento WHERE ID=".$row['ID_Alojamiento'];
+			$cont++;
+			$result2=$datos->query($select2);
+			$rowalo = mysql_fetch_array($result2);
+			?>
+			<div class="col-md-3 col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4><?php echo $rowalo['Nombre'] ?></h4></div>
+					<div class="panel-body">
+					<img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
+					<div class="clearfix"></div>
+					<hr>
+					<p><?php echo $rowalo['Descripcion']?></p>
+					<div class="clearfix"></div>
+					<hr>
+					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento=<?php echo $rowalo['ID']?>'" >Ver Mas</button>
+					<div class="clearfix"></div>                            
             </div>
          </div> 
-    </div><!--/articles-->
-    <div class="col-md-3 col-sm-6">
-    	<div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Hotel prado</h4></div>
-   			<div class="panel-body">
-			  <img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-              <div class="clearfix"></div>
-			  <hr>
-              <p>The more powerful (and 100% fluid) Bootstrap 3 grid now comes in 4 sizes (or "breakpoints"). Tiny (for smartphones), Small (for tablets), Medium (for laptops) and Large (for laptops/desktops)</p>
-              <div class="clearfix"></div>
-              <hr>
-              <div class="clearfix"></div>              
-              
-            </div>
-         </div> 
-    </div><!--/articles-->
-	    <div class="col-md-3 col-sm-6">
-    	<div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Hotel prado</h4></div>
-   			<div class="panel-body">
-			  <img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-              <div class="clearfix"></div>
-			  <hr>
-              <p>The more powerful (and 100% fluid) Bootstrap 3 grid now comes in 4 sizes (or "breakpoints"). Tiny (for smartphones), Small (for tablets), Medium (for laptops) and Large (for laptops/desktops)</p>
-              <div class="clearfix"></div>
-              <hr>
-              <div class="clearfix"></div>              
-              
-            </div>
-         </div> 
-    </div><!--/articles-->
-	    <div class="col-md-3 col-sm-6">
-    	<div class="panel panel-default">
-           <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Hotel prado</h4></div>
-   			<div class="panel-body">
-			  <img src="./images/h_prueba.jpg" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-              <div class="clearfix"></div>
-			  <hr>
-              <p>The more powerful (and 100% fluid) Bootstrap 3 grid now comes in 4 sizes (or "breakpoints"). Tiny (for smartphones), Small (for tablets), Medium (for laptops) and Large (for laptops/desktops)</p>
-              <div class="clearfix"></div>
-              <hr>
-              <div class="clearfix"></div>              
-              
-            </div>
-         </div> 
-    </div><!--/articles-->
+    </div>	
+			<?php
+		}
+	}
+	
+	?>
     </div><!--/articles-->		
 </div>	
 </div>		
