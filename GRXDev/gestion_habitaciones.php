@@ -5,6 +5,16 @@
         <div class="alert alert-info alert-dismissable">Error al iniciar sesi�n.</div>
     </div>
 <?php } ?>
+<?php if(isset($_GET['creacion'])){
+    $creacion=$_GET['creacion'];
+    switch($creacion){
+        case 'exito':
+            echo '<div class="col-md-12 col-sm-12">
+                    <div class="alert alert-success">La habitación ha sido creada con éxito.</div>
+                  </div> ';
+            break;
+    }
+}?>
 <div center-block">
 <div class="panel panel-warning">
     <div class="panel-heading"><h4>Añadir habitaciones</h4></div>

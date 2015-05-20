@@ -34,16 +34,16 @@
                 <div class="panel-body">
                     <form class="form col-md-8 center-block" action="script_reserva_multiple.php" method="post">
                         <div class="form-group">
-                            <input type="text" name="reserva_desde" class="form-control" placeholder="Desde (26-01-2015)">
+                            <input type="date" name="reserva_desde" class="form-control" placeholder="Desde (dd/mm/aaaa)" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="reserva_hasta" class="form-control" placeholder="Hasta (26-01-2015)">
+                            <input type="date" name="reserva_hasta" class="form-control" placeholder="Hasta (dd/mm/aaaa)" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="reserva_tarjeta" class="form-control" placeholder="NºTarjeta">
+                            <input type="text" name="reserva_tarjeta" class="form-control" placeholder="NºTarjeta" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="reserva_tipo_tarjeta" class="form-control" placeholder="Tipo de tarjeta">
+                            <input type="text" name="reserva_tipo_tarjeta" class="form-control" placeholder="Tipo de tarjeta" required>
                         </div>
                         <?php $habitaciones=$_POST['habitacion']; foreach($habitaciones as $habitacion){
                             echo '<input type="hidden" name="habitaciones[]" value="'.$habitacion.'">';

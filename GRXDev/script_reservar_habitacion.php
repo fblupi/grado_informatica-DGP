@@ -24,24 +24,24 @@
                     $result = $datos->Query("insert into reserva_habitacion (ID_Habitacion,ID_Usuario,Fecha_entrada,Fecha_salida,NumeroTarjeta,TipoTarjeta) values ('$id_habitacion','$id_usuario','$desde_sql','$hasta_sql','$tarjeta','$tipo_tarjeta')");
                     //Comprobamos que se ha realizado el insert correctamente
                     if ($result) {
-                        header('location: index.php');
+                        header('location: index.php?cat=buscador_alo&reserva=hab_exito');
                     } else {
-                        header('location: reservar_habitacion.php?error_reserva=true');
+                        header('location: index.php?cat=reserva_habitacion&error_reserva=true');
                     }
                 }
                 else 
                 {
-                    header('location: reservar_habitacion.php?error_fechas_ocupadas=true');
+                    header('location: index.php?cat=reserva_habitacion&error_fechas_ocupadas=true');
                 }
             }
             else 
             {
-                header('location: reservar_habitacion.php?error_select=true');
+                header('location: index.php?cat=reserva_habitacion&error_select=true');
             }
         }
         else 
         {
-            header('location: reservar_habitacion.php?error_fechas=true');
+            header('location: index.php?cat=reserva_habitacion&error_fechas=true');
         }
  }
 

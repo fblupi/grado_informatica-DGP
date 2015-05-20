@@ -5,6 +5,22 @@
                 <div class="alert alert-info alert-dismissable">Error al iniciar sesi�n.</div>
             </div>
         <?php } ?>
+        <?php if(isset($_GET['reserva'])){
+            $reserva=$_GET['reserva'];
+            switch($reserva){
+                case 'hab_exito':
+                    echo '<div class="col-md-12 col-sm-12">
+                            <div class="alert alert-success">La habitación ha sido reservada con éxito.</div>
+                          </div> ';
+                    break;
+                case 'alo_exito':
+                    echo '<div class="col-md-12 col-sm-12">
+                                <div class="alert alert-success">El alojamiento ha sido reservado con éxtio.</div>
+                          </div> ';
+                    break;
+            }
+        }?>
+
         <div class="col-md-12 col-sm-12">
             <div class="panel panel-warning">
                 <div class="panel-heading"><h4>Buscar Alojamientos</h4></div>

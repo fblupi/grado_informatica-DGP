@@ -56,7 +56,7 @@ if(isset($_POST['add_nombre']) && isset($_POST['add_direccion']) && isset($_POST
                     }
                 }
             }
-            header('location: index.php?cat=gestion_alojamientos');
+            header('location: index.php?cat=gestion_alojamientos&creacion=exito');
         }
 
 

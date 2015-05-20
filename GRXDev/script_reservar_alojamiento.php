@@ -25,7 +25,7 @@ if (isset($_POST['reserva_desde']) && isset($_POST['reserva_hasta']) && isset($_
                 $result = $datos->Query($cadena2);
                 //Comprobamos que se ha realizado el insert correctamente
                 if ($result) {
-                    header('location: index.php');
+                    header('location: index.php?cat=buscador_alo&reserva=alo_exito');
                 } else {
                     header('location: reservar_alojamiento.php?error_reserva=true&ID_Alojamiento='.$id_alojamiento);
                 }

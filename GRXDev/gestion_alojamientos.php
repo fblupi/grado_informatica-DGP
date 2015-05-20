@@ -1,10 +1,22 @@
+
 <div class="container" id="main">
+    <?php if ((isset($_POST['correo']) || isset($_POST['pass'])) && mysql_num_rows($result) == 0) { ?>
+        <div class="col-md-12 col-sm-12">
+            <div class="alert alert-info alert-dismissable">Error al iniciar sesi�n.</div>
+        </div>
+    <?php } ?>
+
     <div class="row">
-        <?php if ((isset($_POST['correo']) || isset($_POST['pass'])) && mysql_num_rows($result) == 0) { ?>
-            <div class="col-md-12 col-sm-12">
-                <div class="alert alert-info alert-dismissable">Error al iniciar sesi�n.</div>
-            </div>
-        <?php } ?>
+        <?php if(isset($_GET['creacion'])){
+            $creacion=$_GET['creacion'];
+            switch($creacion){
+                case 'exito':
+                    echo '<div class="col-md-12 col-sm-12">
+                            <div class="alert alert-success">El alojamiento ha sido creado con éxito.</div>
+                          </div> ';
+                    break;
+            }
+        }?>
         <div center-block">
             <div class="panel panel-warning">
                 <div class="panel-heading"><h4>Añadir alojamiento</h4></div>
