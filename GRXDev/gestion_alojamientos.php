@@ -30,7 +30,7 @@
                         <label for="nombre">Dirección</label>
                         <input type="text" id="nombre" name="add_direccion" class="form-control" >
                     </div>
-                    <div class="form-group col-md-2 col-sm-2">  
+                    <div class="form-group col-md-4 col-sm-2">  
                         <label for="tipo">Tipo</label>
                         <select name="add_tipo" id="estrella" class="form-control">
                             <option value="1">Hotel</option>
@@ -38,10 +38,6 @@
 							<option value="3">Piso-parcial</option>
 							<option value="4">Piso completo</option>
                         </select>
-                    </div>
-                    <div class="form-group col-md-2 col-sm-2">    
-                        <label for="nombre">Precio</label>
-                        <input type="text" id="nombre" name="add_precio" class="form-control">
                     </div>
                     <div class="form-group col-md-2 col-sm-2">
                         <label for="nombre">Imagen</label>

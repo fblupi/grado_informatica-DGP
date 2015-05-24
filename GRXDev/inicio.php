@@ -57,73 +57,9 @@ include 'conexionBD.php';
 		}
 	}
 	?>
-					<div class="col-md-4 col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
-					<div class="panel-body">
-					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-					<div class="clearfix"></div>
-					<hr>
-					<div style="height:15%">
-					<p> prueba2</p>
-					</div>
-					<div class="clearfix"></div>
-					<hr>
-					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
-					<div class="clearfix"></div>                            
-            </div>
-         </div> 
-    </div>
-					<div class="col-md-4 col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
-					<div class="panel-body">
-					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-					<div class="clearfix"></div>
-					<hr>
-					<div style="height:15%">
-					<p> prueba2</p>
-					</div>
-					<div class="clearfix"></div>
-					<hr>
-					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
-					<div class="clearfix"></div>                            
-            </div>
-         </div> 
-    </div>				<div class="col-md-4 col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
-					<div class="panel-body">
-					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-					<div class="clearfix"></div>
-					<hr>
-					<div style="height:15%">
-					<p> prueba2</p>
-					</div>
-					<div class="clearfix"></div>
-					<hr>
-					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
-					<div class="clearfix"></div>                            
-            </div>
-         </div> 
-    </div>
-					<div class="col-md-4 col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Prueba</h4></div>
-					<div class="panel-body">
-					<img src=" echo $imagen" class="img-responsive img-thumbnail pull-center" style="margin-left:5%; width:90%; height:40%;">
-					<div class="clearfix"></div>
-					<hr>
-					<div style="height:15%">
-					<p> prueba2</p>
-					</div>
-					<div class="clearfix"></div>
-					<hr>
-					<button class="btn btn-primary" style="margin-left:25%" onClick="location.href = 'index.php?cat=alojamiento&ID_Alojamiento='" >Ver Mas</button>
-					<div class="clearfix"></div>                            
-            </div>
-         </div> 
-    </div>
+
+									
+
     </div><!--/articles-->		
 </div>	
 </div>		
