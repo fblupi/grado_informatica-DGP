@@ -4,6 +4,7 @@ debemos incorporar la base de datos de la web en nuestro servidor, para ello:
 -Creamos una nueva base de datos llamada grxdev
 -Dentro de esta nueva base de datos pulsamos el botón importar
 -Seleccionamos el fichero grxdev_30032015.sql y le damos a continuar
+-Si el usuario es distinto de root o tiene contraseña en la base de datos, deberemos modificar el archivo conexionBD.php con los datos de nuestra base de datos.
 
 Una vez importada la base de datos ahora tenemos que introducir en nuestro
 servidor apache la carpeta GRXDev la cual contiene la pagina web.
